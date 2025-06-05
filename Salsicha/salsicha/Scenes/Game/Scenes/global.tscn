@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://fhlbixy6v8jl"]
+
+[ext_resource type="Script" uid="uid://dslqa2rsi8i4m" path="res://Scenes/Game/Scripts/global.gd" id="1_5txmi"]
+
+[node name="Bullet_time" type="Timer"]
+script = ExtResource("1_5txmi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

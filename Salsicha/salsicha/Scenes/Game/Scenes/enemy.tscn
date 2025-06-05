@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://dolrp6cicim2l"]
+
+[ext_resource type="Texture2D" uid="uid://dr16sqgwtqtfr" path="res://Scenes/Game/Images/bg1.png" id="1_ed6uf"]
+[ext_resource type="Script" uid="uid://7ou5dyrmod5k" path="res://Scenes/Game/Scenes/enemy.gd" id="1_hifi0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qi2p4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ed6uf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gyqm"]
+size = Vector2(132, 133)
+
+[node name="Enemy1" type="Area2D" groups=["enemies"]]
+script = ExtResource("1_hifi0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.992087, 0.096098, 0.0454726, 1)
+position = Vector2(1.19209e-07, -3.57628e-07)
+scale = Vector2(0.0683494, 0.122454)
+sprite_frames = SubResource("SpriteFrames_qi2p4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_4gyqm")
+
+[node name="Life" type="ProgressBar" parent="."]
+offset_left = -66.0
+offset_top = -100.0
+offset_right = 66.0
+offset_bottom = -73.0
+max_value = 3.0
+step = 1.0
+value = 3.0
+rounded = true
+show_percentage = false
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

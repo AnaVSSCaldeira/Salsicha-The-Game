@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://215pj2bfcpqs"]
+
+[ext_resource type="Script" uid="uid://bitluai5sr4po" path="res://Scenes/Game/Scripts/Life.gd" id="1_467ij"]
+[ext_resource type="Texture2D" uid="uid://df6t515nkq4u1" path="res://Scenes/Game/Images/heart.png" id="1_o0ip2"]
+
+[node name="Life" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(40, 13)
+offset_right = 40.0
+offset_bottom = 33.0
+script = ExtResource("1_467ij")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(20, 15)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("1_o0ip2")
+hframes = 5
