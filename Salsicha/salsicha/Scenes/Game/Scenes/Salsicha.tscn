@@ -29,7 +29,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vw0nc"]
 size = Vector2(67.9999, 127)
 
-[node name="Salsicha" type="CharacterBody2D"]
+[node name="Salsicha" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_vb0mm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -43,3 +43,8 @@ sprite_frames = SubResource("SpriteFrames_vb4gv")
 position = Vector2(2.50009, -4.99997)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_vw0nc")
+
+[node name="Invulnerable_timer" type="Timer" parent="."]
+wait_time = 0.675
+
+[connection signal="timeout" from="Invulnerable_timer" to="." method="_on_invulnerable_timer_timeout"]

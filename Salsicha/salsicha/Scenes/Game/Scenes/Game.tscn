@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bjb5bxg43f6ir"]
+[gd_scene load_steps=6 format=3 uid="uid://bjb5bxg43f6ir"]
 
 [ext_resource type="PackedScene" uid="uid://cac3plj0yo8cx" path="res://Scenes/Game/Scenes/Salsicha.tscn" id="1_3npm6"]
 [ext_resource type="PackedScene" uid="uid://dr31c7kgkwvym" path="res://Scenes/Game/Scenes/Hud.tscn" id="1_5cy7k"]
 [ext_resource type="Script" uid="uid://cjapypki4nqf" path="res://Scenes/Game/Scripts/game.gd" id="1_iidra"]
 [ext_resource type="PackedScene" uid="uid://1ghcm2qqdkf5" path="res://Scenes/Game/Scenes/Ground.tscn" id="2_37rrd"]
-[ext_resource type="PackedScene" uid="uid://dlmrlbnqqg6n3" path="res://Parallax_bg.tscn" id="3_337gq"]
-[ext_resource type="PackedScene" uid="uid://dolrp6cicim2l" path="res://Scenes/Game/Scenes/enemy.tscn" id="7_blyp7"]
+[ext_resource type="PackedScene" uid="uid://dlmrlbnqqg6n3" path="res://Scenes/Game/Scenes/Parallax_bg.tscn" id="3_337gq"]
 
 [node name="Main_Game" type="Node2D"]
 script = ExtResource("1_iidra")
@@ -19,13 +18,23 @@ transform = Transform2D(2, 0, 0, 2, 20, 20)
 position = Vector2(961, 1044)
 scale = Vector2(39.2171, -1.8467)
 
+[node name="wall" parent="." instance=ExtResource("2_37rrd")]
+position = Vector2(-47, 18)
+rotation = 1.5708
+scale = Vector2(39.2171, -1.8467)
+
+[node name="wall2" parent="." instance=ExtResource("2_37rrd")]
+position = Vector2(1967, 18)
+rotation = 4.71239
+scale = Vector2(39.2171, -1.8467)
+
 [node name="Salsicha" parent="." instance=ExtResource("1_3npm6")]
 position = Vector2(974, 976)
 
+[node name="Camera2D" type="Camera2D" parent="Salsicha"]
+position = Vector2(-14, -430)
+rotation = -1.5708
+scale = Vector2(43.817, -1.8467)
+limit_top = 0
+
 [node name="ParallaxBackground" parent="." instance=ExtResource("3_337gq")]
-
-[node name="Enemy1" parent="." instance=ExtResource("7_blyp7")]
-position = Vector2(1381, 204)
-
-[node name="Enemy2" parent="." instance=ExtResource("7_blyp7")]
-position = Vector2(1573, 676)
