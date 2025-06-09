@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://wcwend7ncywa"]
+
+[ext_resource type="Texture2D" uid="uid://bqyfc00hkdkyi" path="res://Scenes/Game/Images/ground_rock.png" id="1_0vxud"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bpfxr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_0vxud")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.839999, 0.839999)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(316.5, 509.5)
+scale = Vector2(13.66, 21.38)
+sprite_frames = SubResource("SpriteFrames_bpfxr")
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Control"]
+modulate = Color(0, 0.00784314, 0.0666667, 1)
+position = Vector2(317, 196)
+scale = Vector2(12.38, 7.29)
+sprite_frames = SubResource("SpriteFrames_bpfxr")
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_top = 395.0
+offset_right = 628.0
+offset_bottom = 1022.0
+theme_override_font_sizes/font_size = 50
+text = "TESTE TESTE TESTEfsdfsfsfsdfffffddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+autowrap_mode = 1

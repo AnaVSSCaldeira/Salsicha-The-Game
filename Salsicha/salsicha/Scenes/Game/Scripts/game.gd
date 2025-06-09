@@ -7,9 +7,12 @@ var invulnerable_count = 0
 func _ready():
 	Input.set_custom_mouse_cursor(load("res://Scenes/Game/Images/aim.png"))
 	heartsConteiner.setMaxHearts($"/root/Global".player_life)
+	$Screen.visible = false
+	$"/root/Global".restart()
 
 func game_over():
-	pass
+	$Screen.visible = true
 
 func get_powers():
 	pass
+

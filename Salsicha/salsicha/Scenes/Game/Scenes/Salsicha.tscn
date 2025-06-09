@@ -47,4 +47,9 @@ shape = SubResource("RectangleShape2D_vw0nc")
 [node name="Invulnerable_timer" type="Timer" parent="."]
 wait_time = 0.675
 
+[node name="Shoot_delay" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="timeout" from="Invulnerable_timer" to="." method="_on_invulnerable_timer_timeout"]
+[connection signal="timeout" from="Shoot_delay" to="." method="_on_shoot_delay_timeout"]

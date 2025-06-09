@@ -6,6 +6,7 @@ const JUMP_VELOCITY = -500.0
 var run
 var invulnerable = false
 var invulnerable_count
+var ammo_delay = false
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -35,11 +36,13 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _input(event):
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT and ammo_delay == false:
 		var  bullet = preload("res://Scenes/Game/Scenes/bullet.tscn").instantiate()
 		bullet.get_node("AnimatedSprite2D").play($"/root/Global".bullet_type)
 		bullet.global_position = Vector2(global_position.x,global_position.y-100)
 		get_tree().current_scene.add_child(bullet)
+		ammo_delay = true
+		$Shoot_delay.start()
 
 
 func player_damage(damage):
@@ -52,7 +55,7 @@ func player_damage(damage):
 			invulnerable = true
 			$Invulnerable_timer.start(0.25)
 	else:
-		print("game over")
+		get_parent().game_over()
 
 func _on_invulnerable_timer_timeout():
 	visible = not visible
@@ -63,3 +66,7 @@ func _on_invulnerable_timer_timeout():
 		invulnerable = false
 		$Invulnerable_timer.stop()
 		visible = true
+
+
+func _on_shoot_delay_timeout():
+	ammo_delay = false
