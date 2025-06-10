@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bjb5bxg43f6ir"]
+[gd_scene load_steps=9 format=3 uid="uid://bjb5bxg43f6ir"]
 
 [ext_resource type="PackedScene" uid="uid://cac3plj0yo8cx" path="res://Scenes/Game/Scenes/Salsicha.tscn" id="1_3npm6"]
 [ext_resource type="PackedScene" uid="uid://dr31c7kgkwvym" path="res://Scenes/Game/Scenes/Hud.tscn" id="1_5cy7k"]
 [ext_resource type="Script" uid="uid://cjapypki4nqf" path="res://Scenes/Game/Scripts/game.gd" id="1_iidra"]
 [ext_resource type="PackedScene" uid="uid://1ghcm2qqdkf5" path="res://Scenes/Game/Scenes/Ground.tscn" id="2_37rrd"]
+[ext_resource type="PackedScene" uid="uid://c8ivgnksb7xqg" path="res://Scenes/Game/Scenes/powers_spawn.tscn" id="2_fxxe4"]
 [ext_resource type="PackedScene" uid="uid://dlmrlbnqqg6n3" path="res://Scenes/Game/Scenes/Parallax_bg.tscn" id="3_337gq"]
 [ext_resource type="PackedScene" uid="uid://cslnr65pa2nyn" path="res://Scenes/Game/Scenes/enemy_spawn.tscn" id="6_r3fxi"]
 [ext_resource type="Texture2D" uid="uid://bqyfc00hkdkyi" path="res://Scenes/Game/Images/ground_rock.png" id="7_blyp7"]
@@ -11,34 +12,10 @@
 [node name="Main_Game" type="Node2D"]
 script = ExtResource("1_iidra")
 
-[node name="Spawn" parent="." instance=ExtResource("6_r3fxi")]
-position = Vector2(965, 220)
-
-[node name="HUD" parent="." instance=ExtResource("1_5cy7k")]
-offset = Vector2(20, 20)
-scale = Vector2(2, 2)
-transform = Transform2D(2, 0, 0, 2, 20, 20)
-
-[node name="Ground" parent="." instance=ExtResource("2_37rrd")]
-position = Vector2(961, 1044)
-scale = Vector2(39.2171, -1.8467)
-
-[node name="wall" parent="." instance=ExtResource("2_37rrd")]
-position = Vector2(-47, 18)
-rotation = 1.5708
-scale = Vector2(39.2171, -1.8467)
-
-[node name="wall2" parent="." instance=ExtResource("2_37rrd")]
-position = Vector2(1967, 18)
-rotation = 4.71239
-scale = Vector2(39.2171, -1.8467)
-
-[node name="Salsicha" parent="." instance=ExtResource("1_3npm6")]
-position = Vector2(974, 976)
-
-[node name="ParallaxBackground" parent="." instance=ExtResource("3_337gq")]
-
 [node name="Screen" type="Control" parent="."]
+process_mode = 3
+visible = false
+z_index = 2
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -60,7 +37,7 @@ text = "Fim de jogo
 Deseja tentar novamente?"
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="Screen"]
+[node name="Restart" type="Button" parent="Screen"]
 layout_mode = 0
 offset_left = 466.0
 offset_top = 496.0
@@ -69,7 +46,7 @@ offset_bottom = 559.0
 theme_override_font_sizes/font_size = 40
 text = "Tentar de novo"
 
-[node name="Button2" type="Button" parent="Screen"]
+[node name="Exit" type="Button" parent="Screen"]
 layout_mode = 0
 offset_left = 1029.0
 offset_top = 497.0
@@ -77,3 +54,39 @@ offset_right = 1379.0
 offset_bottom = 560.0
 theme_override_font_sizes/font_size = 40
 text = "Sair"
+
+[node name="Powers Spawner" parent="." instance=ExtResource("2_fxxe4")]
+process_mode = 3
+visible = false
+z_index = 1
+position = Vector2(87, 54)
+
+[node name="HUD" parent="." instance=ExtResource("1_5cy7k")]
+offset = Vector2(20, 20)
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 20, 20)
+
+[node name="Spawn" parent="." instance=ExtResource("6_r3fxi")]
+position = Vector2(965, 220)
+
+[node name="Ground" parent="." instance=ExtResource("2_37rrd")]
+position = Vector2(961, 1044)
+scale = Vector2(39.2171, -1.8467)
+
+[node name="wall" parent="." instance=ExtResource("2_37rrd")]
+position = Vector2(-47, 18)
+rotation = 1.5708
+scale = Vector2(39.2171, -1.8467)
+
+[node name="wall2" parent="." instance=ExtResource("2_37rrd")]
+position = Vector2(1967, 18)
+rotation = 4.71239
+scale = Vector2(39.2171, -1.8467)
+
+[node name="Salsicha" parent="." instance=ExtResource("1_3npm6")]
+position = Vector2(974, 976)
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("3_337gq")]
+
+[connection signal="pressed" from="Screen/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Screen/Exit" to="." method="_on_exit_pressed"]

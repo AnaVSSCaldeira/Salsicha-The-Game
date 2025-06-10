@@ -46,21 +46,21 @@ func _input(event):
 
 
 func player_damage(damage):
-	if $"/root/Global".player_life > 0:
-		if invulnerable == false:
-			invulnerable_count = 0
-			$"/root/Global".player_life -= damage
-			var heartsConteiner = get_parent().get_node("HUD").get_node("Hearts")
-			heartsConteiner.updateHearts($"/root/Global".player_life)
-			invulnerable = true
-			$Invulnerable_timer.start(0.25)
-	else:
-		get_parent().game_over()
+	if $"/root/Global".player_life > 0 and invulnerable == false:
+		invulnerable_count = 0
+		$"/root/Global".player_life -= damage
+
+		if $"/root/Global".player_life <= 0:
+			get_parent().game_over()
+
+		var heartsConteiner = get_parent().get_node("HUD").get_node("Hearts")
+		heartsConteiner.updateHearts($"/root/Global".player_life)
+		invulnerable = true
+		$Invulnerable_timer.start(0.25)
 
 func _on_invulnerable_timer_timeout():
 	visible = not visible
 	invulnerable_count += 1
-	print(invulnerable_count)
 
 	if invulnerable_count == 6:
 		invulnerable = false

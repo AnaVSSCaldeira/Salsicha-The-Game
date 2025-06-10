@@ -3,7 +3,6 @@ extends Area2D
 var life = 3
 
 func _ready():
-	print("OI")
 	$Life.max_value = life
 	$Life.value = life
 	$Life.visible = false
@@ -16,6 +15,7 @@ func take_damage(damage):
 
 	if $Life.value <= 0:
 		$Life.value = 0
+		get_parent().wave_ends()
 		queue_free()
 
 func _on_timer_timeout():

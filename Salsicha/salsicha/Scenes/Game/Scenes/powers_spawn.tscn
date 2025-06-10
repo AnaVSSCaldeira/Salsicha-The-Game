@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8ivgnksb7xqg"]
+
+[ext_resource type="Texture2D" uid="uid://bqyfc00hkdkyi" path="res://Scenes/Game/Images/ground_rock.png" id="1_0j1mj"]
+[ext_resource type="Script" uid="uid://bqaypp17fj413" path="res://Scenes/Game/Scripts/h_box_container.gd" id="2_tyhbn"]
+[ext_resource type="PackedScene" uid="uid://wcwend7ncywa" path="res://Scenes/Game/Scenes/power_card.tscn" id="3_tyhbn"]
+
+[node name="Powers Spawner" type="Marker2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.152941, 0.145098, 0.152941, 1)
+position = Vector2(869, 436.5)
+scale = Vector2(35.76, 18.46)
+texture = ExtResource("1_0j1mj")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 341.0
+offset_right = 1362.0
+offset_bottom = 137.0
+theme_override_font_sizes/font_size = 100
+text = "Escolha sua melhoria"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 70.0
+offset_top = 174.0
+offset_right = 2070.0
+offset_bottom = 182.0
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+theme_override_constants/separation = 1000
+alignment = 1
+script = ExtResource("2_tyhbn")
+
+[node name="Panel" parent="HBoxContainer" instance=ExtResource("3_tyhbn")]
+layout_mode = 2

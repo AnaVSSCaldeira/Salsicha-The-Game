@@ -13,17 +13,28 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Control" type="Control"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(0.839999, 0.839999)
+[node name="Panel" type="Panel"]
+offset_right = 660.0
+offset_bottom = 1043.0
+scale = Vector2(0.980727, 0.980727)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(316.5, 509.5)
 scale = Vector2(13.66, 21.38)
 sprite_frames = SubResource("SpriteFrames_bpfxr")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.625
+anchor_top = -0.625
+anchor_right = 16.45
+anchor_bottom = 26.1
+offset_left = 389.5
+offset_top = 626.875
+offset_right = 14642.0
+offset_bottom = 12911.7
+scale = Vector2(0.0266475, 0.0266475)
 
 [node name="Control" type="Control" parent="."]
 anchors_preset = 0
