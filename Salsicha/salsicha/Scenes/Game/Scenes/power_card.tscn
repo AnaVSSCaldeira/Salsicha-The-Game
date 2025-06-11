@@ -23,33 +23,42 @@ position = Vector2(316.5, 509.5)
 scale = Vector2(13.66, 21.38)
 sprite_frames = SubResource("SpriteFrames_bpfxr")
 
-[node name="Button" type="Button" parent="."]
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.625
 anchor_top = -0.625
 anchor_right = 16.45
 anchor_bottom = 26.1
-offset_left = 389.5
-offset_top = 626.875
-offset_right = 14642.0
-offset_bottom = 12911.7
+offset_left = 2.0
+offset_right = 24863.0
+offset_bottom = 39052.0
 scale = Vector2(0.0266475, 0.0266475)
 
-[node name="Control" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Control"]
+[node name="PowerImage" type="AnimatedSprite2D" parent="Control"]
 modulate = Color(0, 0.00784314, 0.0666667, 1)
 position = Vector2(317, 196)
 scale = Vector2(12.38, 7.29)
 sprite_frames = SubResource("SpriteFrames_bpfxr")
 
-[node name="Label" type="Label" parent="Control"]
+[node name="Name" type="Label" parent="Control"]
 layout_mode = 0
 offset_top = 395.0
+offset_right = 628.0
+offset_bottom = 464.0
+theme_override_font_sizes/font_size = 50
+text = "TESTE"
+horizontal_alignment = 1
+autowrap_mode = 1
+
+[node name="Description" type="Label" parent="Control"]
+layout_mode = 0
+offset_top = 476.0
 offset_right = 628.0
 offset_bottom = 1022.0
 theme_override_font_sizes/font_size = 50
