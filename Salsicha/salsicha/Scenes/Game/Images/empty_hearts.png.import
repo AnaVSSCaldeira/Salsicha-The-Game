@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5r6py083hlm4"
-path="res://.godot/imported/bg3.png-600c61d551fd42f7ce0a7f0385068ce9.ctex"
+uid="uid://c4ud4f44rn0fg"
+path="res://.godot/imported/empty_hearts.png-4c130b8094584e6e9dd3309868955c8b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Game/Images/bg3.png"
-dest_files=["res://.godot/imported/bg3.png-600c61d551fd42f7ce0a7f0385068ce9.ctex"]
+source_file="res://Scenes/Game/Images/empty_hearts.png"
+dest_files=["res://.godot/imported/empty_hearts.png-4c130b8094584e6e9dd3309868955c8b.ctex"]
 
 [params]
 

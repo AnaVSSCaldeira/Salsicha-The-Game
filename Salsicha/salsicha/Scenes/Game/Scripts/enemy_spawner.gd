@@ -8,10 +8,11 @@ func enemy_wave(waves_list, wave):
 
         var can_spawn = false
         while can_spawn == false:
-            spawn_pos = Vector2(randf_range(50, 1860), randf_range(50, 600))
+            spawn_pos = Vector2(randf_range(200, 1500), randf_range(200, 600))
             if len(last_positions) > 0:
                 for pos in last_positions:
-                    if pos.distance_to(spawn_pos) < 32:
+                    print(pos.distance_to(spawn_pos) < 50)
+                    if pos.distance_to(spawn_pos) < 1000:
                         break
             else:
                 can_spawn = true

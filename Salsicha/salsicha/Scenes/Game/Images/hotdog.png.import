@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1yw05iuwufgi"
-path="res://.godot/imported/bg2.png-bfd3dff710fd844a9bd1362ba4bc685b.ctex"
+uid="uid://bxpkmm7bfbnmy"
+path="res://.godot/imported/hotdog.png-b21cd9dbce8ae66c6d55788fa2310893.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Game/Images/bg2.png"
-dest_files=["res://.godot/imported/bg2.png-bfd3dff710fd844a9bd1362ba4bc685b.ctex"]
+source_file="res://Scenes/Game/Images/hotdog.png"
+dest_files=["res://.godot/imported/hotdog.png-b21cd9dbce8ae66c6d55788fa2310893.ctex"]
 
 [params]
 

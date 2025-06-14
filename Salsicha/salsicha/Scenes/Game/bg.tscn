@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cr7i5rj67d6n"]
+
+[ext_resource type="Texture2D" uid="uid://dwjneboxsoijn" path="res://Scenes/Game/Images/mines.png" id="1_3d7vg"]
+
+[node name="Sprite2D" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("1_3d7vg")

@@ -16,5 +16,11 @@ func create_powers():
 		powers_list.append(power)
 		card.get_node("Control").get_node("Name").text = all_powers_list[str(power)]["Name"]
 		card.get_node("Control").get_node("Description").text = all_powers_list[str(power)]["Description"]
+		card.id = power
 		
 		add_child(card)
+
+func destroy_powers():
+	for child in get_children():
+		remove_child(child)
+		child.queue_free()

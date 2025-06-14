@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dr16sqgwtqtfr"
-path="res://.godot/imported/bg1.png-753ed80454bdc7f2fdb1f90e73bffc69.ctex"
+uid="uid://dwjneboxsoijn"
+path="res://.godot/imported/mines.png-9423457892a4e58d2e7b8845056ff75c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Game/Images/bg1.png"
-dest_files=["res://.godot/imported/bg1.png-753ed80454bdc7f2fdb1f90e73bffc69.ctex"]
+source_file="res://Scenes/Game/Images/mines.png"
+dest_files=["res://.godot/imported/mines.png-9423457892a4e58d2e7b8845056ff75c.ctex"]
 
 [params]
 

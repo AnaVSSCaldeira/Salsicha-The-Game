@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://bl0cu1di6up8k"]
 
 [ext_resource type="Script" uid="uid://c8p8u5xl8slo4" path="res://Scenes/Game/Scripts/enemy_bullet.gd" id="1_mhqj8"]
-[ext_resource type="Texture2D" uid="uid://dwku6ck1n17vx" path="res://Scenes/Game/Images/coin.png" id="1_t4u8b"]
+[ext_resource type="Texture2D" uid="uid://6a7nqbsqhqyk" path="res://Scenes/Game/Images/enemy_bullet.png" id="2_mhqj8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mhqj8"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_t4u8b")
+"texture": ExtResource("2_mhqj8")
 }],
 "loop": true,
 "name": &"default",

@@ -1,16 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://1ghcm2qqdkf5"]
+[gd_scene load_steps=3 format=3 uid="uid://dpd4ld7sn4p3w"]
 
-[ext_resource type="Texture2D" uid="uid://bxqndna8tntb" path="res://Scenes/Game/Images/ground.png" id="1_rbb3c"]
+[ext_resource type="Texture2D" uid="uid://de4rs7wk3smik" path="res://Scenes/Game/Images/wall.png" id="1_hfvs3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_77mu2"]
-size = Vector2(2000, 86)
+size = Vector2(37, 1102)
 
 [node name="Ground" type="StaticBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5)
+position = Vector2(11.5, 0)
 shape = SubResource("RectangleShape2D_77mu2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("1_rbb3c")
+texture = ExtResource("1_hfvs3")
