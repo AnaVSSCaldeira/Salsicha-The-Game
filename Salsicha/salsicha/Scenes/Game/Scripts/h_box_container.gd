@@ -9,14 +9,18 @@ func create_powers():
 
 	for i in range(3):
 		var card = Card.instantiate()
-		var power = randi_range(1,6)
-		while power in powers_list or power in unique_powers:
-			power = randi_range(1,6)
 
-		powers_list.append(power)
-		card.get_node("Control").get_node("Name").text = all_powers_list[str(power)]["Name"]
-		card.get_node("Control").get_node("Description").text = all_powers_list[str(power)]["Description"]
-		card.id = power
+		# var power = randi_range(1,6)
+		# while power in powers_list or power in unique_powers:
+		# 	power = randi_range(1,6)
+
+		# powers_list.append(power)
+		# card.get_node("Control").get_node("Name").text = all_powers_list[str(power)]["Name"]
+		# card.get_node("Control").get_node("Description").text = all_powers_list[str(power)]["Description"]
+		# card.id = power
+		
+		# para debug
+		card.id = 5
 		
 		add_child(card)
 

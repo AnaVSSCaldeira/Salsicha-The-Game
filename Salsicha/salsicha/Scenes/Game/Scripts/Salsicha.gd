@@ -3,6 +3,8 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -500.0
 
+@onready var global = $"/root/Global"
+
 var run
 var invulnerable = false
 var invulnerable_count
@@ -23,7 +25,9 @@ func _physics_process(delta):
 		else:
 			run = 0
 
-		velocity.x = direction * (SPEED + run)
+		var velocity_bonus = SPEED * global.velocity_bonus / 100
+		velocity.x = direction * (SPEED + run + velocity_bonus)
+		
 		if direction > 0:
 			$AnimatedSprite2D.flip_h = false
 			$mochila.flip_h = false
@@ -38,7 +42,7 @@ func _physics_process(delta):
 func _input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT and ammo_delay == false:
 		var  bullet = preload("res://Scenes/Game/Scenes/bullet.tscn").instantiate()
-		bullet.get_node("AnimatedSprite2D").play($"/root/Global".bullet_type)
+		bullet.get_node("AnimatedSprite2D").play(global.bullet_type)
 		bullet.global_position = Vector2(global_position.x,global_position.y-100)
 		get_tree().current_scene.add_child(bullet)
 		ammo_delay = true
@@ -46,15 +50,15 @@ func _input(event):
 
 
 func player_damage(damage):
-	if $"/root/Global".player_life > 0 and invulnerable == false:
+	if global.player_life > 0 and invulnerable == false:
 		invulnerable_count = 0
-		$"/root/Global".player_life -= damage
+		global.player_life -= damage
 
-		if $"/root/Global".player_life <= 0:
+		if global.player_life <= 0:
 			get_parent().game_over()
 
 		var heartsConteiner = get_parent().get_node("HUD").get_node("Hearts")
-		heartsConteiner.updateHearts($"/root/Global".player_life)
+		heartsConteiner.updateHearts(global.player_life)
 		invulnerable = true
 		$Invulnerable_timer.start(0.25)
 

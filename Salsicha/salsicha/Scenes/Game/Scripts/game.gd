@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var heartsConteiner = $HUD.get_node("Hearts")
+@onready var global = $"/root/Global"
 var invulnerable = false
 var invulnerable_count = 0
 var enemy1 = preload("res://Scenes/Game/Scenes/enemy.tscn")
@@ -10,7 +11,7 @@ var kill_monsters = 0
 
 func _ready():
 	Input.set_custom_mouse_cursor(load("res://Scenes/Game/Images/aim.png"))
-	heartsConteiner.setMaxHearts($"/root/Global".player_life)
+	heartsConteiner.setMaxHearts(global.player_life)
 	$Screen.visible = false
 	$"Powers Spawner/Screen".visible = false
 	call_deferred("_spawner")
@@ -33,10 +34,11 @@ func get_powers():
 			button.connect("button_pressed", Callable(self, "_on_button_pressed"))
 
 func _on_button_pressed(id: int):
-	$"/root/Global".chosen_power(id)
+	global.chosen_power(id)
 	$"Powers Spawner/Screen/HBoxContainer".destroy_powers()
 	$"Powers Spawner/Screen".visible = false
 	get_tree().paused = false
+	global.callv(global.powers[str(id)]["Function"], global.powers[str(id)]["Params"])
 	new_wave()
 
 func new_wave():
@@ -56,5 +58,5 @@ func wave_ends():
 
 func _on_restart_pressed():
 	get_tree().paused = false
-	$"/root/Global".restart()
+	global.restart()
 	get_tree().reload_current_scene()
