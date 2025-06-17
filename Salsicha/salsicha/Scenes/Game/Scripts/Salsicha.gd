@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
 const JUMP_VELOCITY = -500.0
 
 @onready var global = $"/root/Global"
@@ -9,6 +8,16 @@ var run
 var invulnerable = false
 var invulnerable_count
 var ammo_delay = false
+var power = false
+var calango
+
+func _ready():
+	$ball_dash_collision.disabled = true
+	$AnimatedSprite2D.animation = "default"
+	$mochila.visible = true
+	scale = Vector2(1,1)
+	calango = 0
+	power = false
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -21,12 +30,23 @@ func _physics_process(delta):
 	if direction:
 
 		if Input.is_key_pressed(KEY_SHIFT):
-			run = 300
+			if $"/root/Global".ball_sprint:
+				run = 600
+				$salsicha_collision.disabled = true
+				$ball_dash_collision.disabled = false
+				$AnimatedSprite2D.animation = "ball_dash"
+				$mochila.visible = false
+			else:
+				run = 300
 		else:
+			$salsicha_collision.disabled = false
+			$ball_dash_collision.disabled = true
+			$AnimatedSprite2D.animation = "default"
+			$mochila.visible = true
 			run = 0
 
-		var velocity_bonus = SPEED * global.velocity_bonus / 100
-		velocity.x = direction * (SPEED + run + velocity_bonus)
+		velocity.x = direction * (global.player_speed + run  + calango)
+		print(velocity)
 		
 		if direction > 0:
 			$AnimatedSprite2D.flip_h = false
@@ -35,7 +55,7 @@ func _physics_process(delta):
 			$AnimatedSprite2D.flip_h = true
 			$mochila.flip_h = true
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, global.player_speed)
 
 	move_and_slide()
 
@@ -46,8 +66,23 @@ func _input(event):
 		bullet.global_position = Vector2(global_position.x,global_position.y-100)
 		get_tree().current_scene.add_child(bullet)
 		ammo_delay = true
-		$Shoot_delay.start()
+		$Shoot_delay.start(1)
+	
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_Q:
+			if $"/root/Global".calango and power == false:
+				scale = Vector2(0.5,0.5)
+				calango = $"/root/Global".calango_veloc
+				$Power_timer.start(2.0)
+				power = true
 
+			if global.power and power == false:
+				var  power_bullet = preload("res://Scenes/Game/Scenes/power_bullet.tscn").instantiate()
+				power_bullet.get_node("AnimatedSprite2D").play(global.power_name)
+				power_bullet.global_position = Vector2(global_position.x,global_position.y-100)
+				get_tree().current_scene.add_child(power_bullet)
+				$Power_cooldown.start(300)
+				power = true
 
 func player_damage(damage):
 	if global.player_life > 0 and invulnerable == false:
@@ -74,3 +109,12 @@ func _on_invulnerable_timer_timeout():
 
 func _on_shoot_delay_timeout():
 	ammo_delay = false
+
+
+func _on_power_timer_timeout():
+	scale = Vector2(1,1)
+	calango = 0
+	$Power_cooldown.start(150)
+
+func _on_power_cooldown_timeout():
+	power = false

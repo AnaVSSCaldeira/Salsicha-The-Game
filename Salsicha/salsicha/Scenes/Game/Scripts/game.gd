@@ -5,7 +5,7 @@ extends Node2D
 var invulnerable = false
 var invulnerable_count = 0
 var enemy1 = preload("res://Scenes/Game/Scenes/enemy.tscn")
-var waves_list = {"0": [enemy1], "1": [enemy1, enemy1, enemy1, enemy1, enemy1, enemy1]}
+var waves_list = {"0": [enemy1],"1": [enemy1, enemy1, enemy1], "2": [enemy1, enemy1, enemy1, enemy1, enemy1, enemy1], "3": [enemy1, enemy1, enemy1, enemy1, enemy1, enemy1, enemy1, enemy1, enemy1], "4": [enemy1, enemy1, enemy1, enemy1, enemy1, enemy1, enemy1, enemy1, enemy1, enemy1, enemy1, enemy1]}
 var wave = 0
 var kill_monsters = 0
 

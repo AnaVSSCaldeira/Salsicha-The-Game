@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://eggmm52ttg3"]
+
+[ext_resource type="Script" uid="uid://bcgxgl0lomedm" path="res://Scenes/Game/Scripts/power_bullet.gd" id="1_4d8ma"]
+[ext_resource type="Texture2D" uid="uid://cor6kwt08ko1t" path="res://Scenes/Game/Images/super_bark.png" id="2_molc7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lc1vq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_molc7")
+}],
+"loop": true,
+"name": &"bark",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qbj4p"]
+radius = 79.0
+height = 158.0
+
+[node name="power_bullet" type="Area2D"]
+script = ExtResource("1_4d8ma")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_lc1vq")
+animation = &"bark"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_qbj4p")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-4.47035e-07, 1.43051e-06)
+scale = Vector2(4, 4)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

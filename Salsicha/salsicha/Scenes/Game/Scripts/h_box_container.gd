@@ -20,7 +20,7 @@ func create_powers():
 		# card.id = power
 		
 		# para debug
-		card.id = 5
+		card.id = 4
 		
 		add_child(card)
 

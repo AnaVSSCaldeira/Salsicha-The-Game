@@ -1,6 +1,6 @@
 extends Area2D
 
-var life = 3
+var life = 5
 
 func _ready():
 	$Life.max_value = life
