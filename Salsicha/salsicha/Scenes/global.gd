@@ -2,10 +2,11 @@ extends Node
 
 @export var player_life = 5
 @export var bullet_type = "default"
-@export var bullet_damage = 1.0
+@export var bullet_damage = 2.0
 @export var bullet_speed = 900.0
 @export var player_speed = 300.0
 @export var powers_number = 3
+# @export var enemy_1
 @export var powers = {
 	"1": {
 		"Name": "Calanguinho", "Description": "Vire um calanguinho! Diminua de tamanho e fique mais rápido!\nAperte a tecla Q para usar.\nEste poder substituirá o atual.", "Unique": true, "Active": false, "Function": "power_calango", "Params": []
@@ -24,7 +25,19 @@ extends Node
 		}, 
 	"6": {
 		"Name": "Latido Super Sônico", "Description": "Dê um latido poderoso que dá um bom dano em área.\nAperte a tecla Q para usar.\nEste poder substituirá o atual.", "Unique": true, "Active": true, "Function": "super_sonic_bark", "Params": []
-		}
+		}, 
+	"7": {
+		"Name": "Super Aumento de velocidade", "Description": "Aumenta o valor da sua velocidade em 20%", "Unique": false, "Active": false, "Function": "velocity_up", "Params": [20.0]
+		}, 
+	"8": {
+		"Name": "Super Aumento de ataque", "Description": "Aumenta o valor do seu ataque em 20%", "Unique": false, "Active": false, "Function": "damage_up", "Params": [20.0]
+		},
+	"9": {
+		"Name": "Ultra Super Aumento de velocidade", "Description": "Aumenta o valor da sua velocidade em 50%", "Unique": false, "Active": false, "Function": "velocity_up", "Params": [50.0]
+		}, 
+	"10": {
+		"Name": "Ultra Super Aumento de ataque", "Description": "Aumenta o valor do seu ataque em 50%", "Unique": false, "Active": false, "Function": "damage_up", "Params": [50.0]
+		},
 	}
 var unique_powers = []
 var current_ability = 0
@@ -59,9 +72,9 @@ func chosen_power(id):
 		unique_powers.append(id)
 
 	if powers[str(id)]["Active"] == true:
+		if current_ability != 0 and current_ability in unique_powers:
+			unique_powers.erase(current_ability)
 		current_ability = id
-		if id in unique_powers:
-			unique_powers.erase(id)
 
 func power_calango():
 	calango = true
@@ -76,7 +89,7 @@ func ball_dash():
 	ball_sprint = true
 
 func velocity_up(percentage):
-	player_speed +=  (player_speed * percentage/100)
+	player_speed += (player_speed * percentage/100)
 	velocity_bonus = velocity_bonus + percentage
 	
 func damage_up(percentage):

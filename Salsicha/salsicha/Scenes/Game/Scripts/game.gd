@@ -4,8 +4,8 @@ extends Node2D
 @onready var global = $"/root/Global"
 var invulnerable = false
 var invulnerable_count = 0
-var enemy1 = preload("res://Scenes/Game/Scenes/enemy.tscn")
-var waves_list = {"0": [enemy1],"1": [enemy1, enemy1, enemy1], "2": [enemy1, enemy1, enemy1, enemy1, enemy1, enemy1], "3": [enemy1, enemy1, enemy1, enemy1, enemy1, enemy1, enemy1, enemy1, enemy1], "4": [enemy1, enemy1, enemy1, enemy1, enemy1, enemy1, enemy1, enemy1, enemy1, enemy1, enemy1, enemy1]}
+var enemy = preload("res://Scenes/Game/Scenes/enemy.tscn")
+var waves_list = {"0": {"enemies_list": [enemy], "types":["default"]},"1": {"enemies_list": [enemy, enemy, enemy], "types":["default", "default", "default"]}, "2": {"enemies_list": [enemy, enemy, enemy, enemy, enemy, enemy], "types":["default", "default", "default", "default", "default", "default"]}, "3": {"enemies_list": [enemy, enemy, enemy, enemy, enemy, enemy, enemy, enemy, enemy], "types":["default", "default", "default", "default", "default", "default", "default", "default", "default"]}, "4": {"enemies_list": [enemy, enemy, enemy, enemy, enemy, enemy, enemy, enemy, enemy, enemy, enemy, enemy], "types":["default", "default", "default", "default", "default", "default", "default", "default", "default", "default", "default", "default"]}}
 var wave = 0
 var kill_monsters = 0
 
@@ -17,7 +17,7 @@ func _ready():
 	call_deferred("_spawner")
 
 func _spawner():
-	kill_monsters = len(waves_list[str(wave)])
+	kill_monsters = len(waves_list[str(wave)]["enemies_list"])
 	$Spawn.enemy_wave(waves_list, wave)
 
 func game_over():
@@ -44,7 +44,7 @@ func _on_button_pressed(id: int):
 func new_wave():
 	if wave < len(waves_list):
 		get_tree().paused = false
-		kill_monsters = len(waves_list[str(wave)])
+		kill_monsters = len(waves_list[str(wave)]["enemies_list"])
 		$Spawn.enemy_wave(waves_list, wave)
 
 func _on_exit_pressed():

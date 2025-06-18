@@ -83,5 +83,10 @@ position = Vector2(35, 434)
 position = Vector2(1887, 434)
 scale = Vector2(-1, -1)
 
+[node name="Music_theme" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+volume_db = -20.0
+autoplay = true
+
 [connection signal="pressed" from="Screen/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="Screen/Exit" to="." method="_on_exit_pressed"]

@@ -25,6 +25,7 @@ func _physics_process(delta):
 
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		$dog_jump.play()
 
 	var direction = Input.get_axis("left", "right")
 	if direction:
@@ -83,6 +84,7 @@ func _input(event):
 				get_tree().current_scene.add_child(power_bullet)
 				$Power_cooldown.start(300)
 				power = true
+				$bark_power.play()
 
 func player_damage(damage):
 	if global.player_life > 0 and invulnerable == false:
@@ -90,11 +92,13 @@ func player_damage(damage):
 		global.player_life -= damage
 
 		if global.player_life <= 0:
+			$dog_die.play()
 			get_parent().game_over()
 
 		var heartsConteiner = get_parent().get_node("HUD").get_node("Hearts")
 		heartsConteiner.updateHearts(global.player_life)
 		invulnerable = true
+		$dog_hurt.play()
 		$Invulnerable_timer.start(0.25)
 
 func _on_invulnerable_timer_timeout():

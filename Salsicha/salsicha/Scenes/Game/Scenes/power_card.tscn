@@ -10,7 +10,12 @@ animations = [{
 "texture": ExtResource("1_0vxud")
 }],
 "loop": true,
-"name": &"default",
+"name": &"common",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"rare",
 "speed": 5.0
 }]
 
@@ -22,6 +27,7 @@ script = ExtResource("1_bpfxr")
 position = Vector2(327.308, 550.612)
 scale = Vector2(13.0108, 21.9021)
 sprite_frames = SubResource("SpriteFrames_bpfxr")
+animation = &"common"
 
 [node name="Control" type="Control" parent="."]
 anchors_preset = 0
@@ -33,6 +39,7 @@ modulate = Color(0, 0.00784314, 0.0666667, 1)
 position = Vector2(326.289, 195.773)
 scale = Vector2(12.38, 7.29)
 sprite_frames = SubResource("SpriteFrames_bpfxr")
+animation = &"common"
 
 [node name="Name" type="Label" parent="Control"]
 layout_mode = 0

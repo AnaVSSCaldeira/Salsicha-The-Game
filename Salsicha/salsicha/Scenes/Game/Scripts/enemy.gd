@@ -1,11 +1,10 @@
 extends Area2D
 
-var life = 5
+var bullet_type
 
 func _ready():
-	$Life.max_value = life
-	$Life.value = life
-	$Life.visible = false
+	var wait_time = randi_range(1,3)
+	$Timer.start(wait_time)
 
 func take_damage(damage):
 	if $Life.value == $Life.max_value:
@@ -20,6 +19,21 @@ func take_damage(damage):
 
 func _on_timer_timeout():
 	var  bullet = preload("res://Scenes/Game/Scenes/enemy_bullet.tscn").instantiate()
-	bullet.get_node("AnimatedSprite2D").play("default")
+	bullet.setup(bullet_type)
+	bullet.get_node("AnimatedSprite2D").play(bullet_type)
 	bullet.global_position = Vector2(global_position.x,global_position.y+100)
 	get_tree().current_scene.add_child(bullet)
+
+func setup(enemy_type):
+	bullet_type = enemy_type
+	match enemy_type:
+		"default":
+			$AnimatedSprite2D.play("default")
+			$Life.max_value = 5
+			$Life.value = 5
+		"strong":
+			$AnimatedSprite2D.play("strong")
+			$Life.max_value = 5
+			$Life.value = 5
+
+	$Life.visible = false
