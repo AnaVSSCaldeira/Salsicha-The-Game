@@ -25,6 +25,8 @@ func game_over():
 	get_tree().paused = true
 
 func get_powers():
+	for node in get_tree().get_nodes_in_group("enemies_bullet"):
+		node.queue_free()
 	get_tree().paused = true
 	$"Powers Spawner/Screen".visible = true
 	$"Powers Spawner/Screen/HBoxContainer".create_powers()
@@ -33,12 +35,12 @@ func get_powers():
 		if button.has_signal("button_pressed"):
 			button.connect("button_pressed", Callable(self, "_on_button_pressed"))
 
-func _on_button_pressed(id: int):
-	global.chosen_power(id)
+func _on_button_pressed(id: int, rarity: String):
+	global.chosen_power(id, rarity)
 	$"Powers Spawner/Screen/HBoxContainer".destroy_powers()
 	$"Powers Spawner/Screen".visible = false
 	get_tree().paused = false
-	global.callv(global.powers[str(id)]["Function"], global.powers[str(id)]["Params"])
+	global.callv(global.powers[rarity][str(id)]["Function"], global.powers[rarity][str(id)]["Params"])
 	new_wave()
 
 func new_wave():

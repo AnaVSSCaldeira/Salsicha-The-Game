@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://b21ddrh8ghcky"]
+
+[ext_resource type="Script" uid="uid://dxb8hjworuyi3" path="res://Scenes/Game/Scripts/food.gd" id="1_5xgw5"]
+[ext_resource type="Texture2D" uid="uid://btdcxycu52cbe" path="res://Scenes/Game/Images/carne.png" id="1_uutyg"]
+[ext_resource type="Texture2D" uid="uid://cw0q4nhbor8d8" path="res://Scenes/Game/Images/cenoura.png" id="2_5xgw5"]
+[ext_resource type="Texture2D" uid="uid://0ir02mdrhcg2" path="res://Scenes/Game/Images/maca.png" id="3_2p2e8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vx2ok"]
+size = Vector2(76, 76)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l3xou"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_uutyg")
+}],
+"loop": true,
+"name": &"carne",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5xgw5")
+}],
+"loop": true,
+"name": &"cenoura",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_2p2e8")
+}],
+"loop": true,
+"name": &"maca",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5xgw5"]
+size = Vector2(87, 86)
+
+[node name="comida" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_5xgw5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_vx2ok")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_l3xou")
+animation = &"carne"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_5xgw5")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

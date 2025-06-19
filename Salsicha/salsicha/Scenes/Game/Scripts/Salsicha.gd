@@ -47,7 +47,6 @@ func _physics_process(delta):
 			run = 0
 
 		velocity.x = direction * (global.player_speed + run  + calango)
-		print(velocity)
 		
 		if direction > 0:
 			$AnimatedSprite2D.flip_h = false
@@ -100,6 +99,15 @@ func player_damage(damage):
 		invulnerable = true
 		$dog_hurt.play()
 		$Invulnerable_timer.start(0.25)
+
+func healing(heal_value):
+	if global.player_life > global.max_player_life or global.player_life + heal_value > 5:
+		global.player_life = 5
+	else:
+		global.player_life += heal_value
+		
+	var heartsConteiner = get_parent().get_node("HUD").get_node("Hearts")
+	heartsConteiner.updateHearts(global.player_life)
 
 func _on_invulnerable_timer_timeout():
 	visible = not visible

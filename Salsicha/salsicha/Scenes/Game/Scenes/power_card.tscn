@@ -17,6 +17,11 @@ animations = [{
 "loop": true,
 "name": &"rare",
 "speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"uncommon",
+"speed": 5.0
 }]
 
 [node name="Panel" type="Panel"]
@@ -27,7 +32,7 @@ script = ExtResource("1_bpfxr")
 position = Vector2(327.308, 550.612)
 scale = Vector2(13.0108, 21.9021)
 sprite_frames = SubResource("SpriteFrames_bpfxr")
-animation = &"common"
+animation = &"uncommon"
 
 [node name="Control" type="Control" parent="."]
 anchors_preset = 0

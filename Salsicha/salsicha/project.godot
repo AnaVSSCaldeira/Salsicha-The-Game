@@ -28,6 +28,7 @@ window/size/mode=3
 [global_group]
 
 enemies="All enemies in game"
+enemies_bullet=""
 
 [input]
 

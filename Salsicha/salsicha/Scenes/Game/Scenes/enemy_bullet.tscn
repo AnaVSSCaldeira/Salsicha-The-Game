@@ -23,7 +23,8 @@ animations = [{
 radius = 41.0
 height = 82.0
 
-[node name="Enemy_bullet" type="Area2D"]
+[node name="Enemy_bullet" type="Area2D" groups=["enemies_bullet"]]
+collision_layer = 2
 script = ExtResource("1_mhqj8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

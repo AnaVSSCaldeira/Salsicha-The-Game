@@ -45,6 +45,7 @@ size = Vector2(67.9999, 127)
 size = Vector2(78, 68)
 
 [node name="Salsicha" type="CharacterBody2D" groups=["player"]]
+collision_mask = 2
 script = ExtResource("1_vb0mm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

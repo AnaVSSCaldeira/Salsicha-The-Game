@@ -8,15 +8,33 @@ func create_powers():
 	var unique_powers = $"/root/Global".unique_powers
 
 	for i in range(3):
+		var rarity = randi_range(1,100) #para saber a raridade
+		var powers_by_rarity #para saber a lista de poderes a partir da raridade
+		var range #para saber quantas cartas tem para procurar
+
 		var card = Card.instantiate()
 
-		var power = randi_range(1,10)
+		if rarity >= 1 and rarity <= 50:
+			powers_by_rarity = all_powers_list["Common"]
+			range = 0
+			card.rarity = "Common"
+		
+		elif rarity >= 51 and rarity <= 80:
+			powers_by_rarity = all_powers_list["Uncommon"]
+			range = 100
+			card.rarity = "Uncommon"
+		else:
+			powers_by_rarity = all_powers_list["Rare"]
+			range = 200
+			card.rarity = "Rare"
+
+		var power = randi_range((range + 1), (range + powers_by_rarity.size()))
 		while power in powers_list or power in unique_powers:
-			power = randi_range(1,6)
+			power = randi_range((range + 1),(range + powers_by_rarity.size()))
 
 		powers_list.append(power)
-		card.get_node("Control").get_node("Name").text = all_powers_list[str(power)]["Name"]
-		card.get_node("Control").get_node("Description").text = all_powers_list[str(power)]["Description"]
+		card.get_node("Control").get_node("Name").text = powers_by_rarity[str(power)]["Name"]
+		card.get_node("Control").get_node("Description").text = powers_by_rarity[str(power)]["Description"]
 		card.id = power
 		
 		# para debug

@@ -14,6 +14,22 @@ func take_damage(damage):
 
 	if $Life.value <= 0:
 		$Life.value = 0
+		var spawn_food = randi_range(1,100)
+		if spawn_food <= $"/root/Global".spawn_life:
+			var food = preload("res://Scenes/Game/Scenes/food.tscn").instantiate()
+			var food_type = randi_range(1,15)
+			var food_name
+
+			if food_type >= 1 and food_type <= 5:
+				food_name = "maca"
+			elif food_type >= 6 and food_type <= 10:
+				food_name = "carne"
+			else:
+				food_name = "cenoura"
+
+			food.get_node("AnimatedSprite2D").play(food_name)
+			food.global_position = Vector2(global_position.x,global_position.y)
+			get_tree().current_scene.add_child(food)
 		get_parent().wave_ends()
 		queue_free()
 
