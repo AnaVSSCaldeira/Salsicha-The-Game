@@ -24,4 +24,5 @@ func enemy_wave(waves_list, wave):
 				
 		enemy_child.global_position = spawn_pos
 		get_parent().add_child(enemy_child)
+		count += 1
 	wave += 1

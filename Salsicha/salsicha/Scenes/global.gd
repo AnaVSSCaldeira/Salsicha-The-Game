@@ -22,6 +22,9 @@ extends Node
 			}, 
 		"4": {
 			"Name": "Aumento de ataque", "Description": "Aumenta o valor do seu ataque em 5%", "Unique": false, "Active": false, "Function": "damage_up", "Params": [5.0]
+			}, 
+		"5": {
+			"Name": "Mais vida", "Description": "Aumenta a chance de aparecer vida em 10%", "Unique": false, "Active": false, "Function": "chance_heal_up", "Params": [10.0]
 			}			
 	},
 	"Uncommon":{
@@ -34,6 +37,9 @@ extends Node
 		"103": {
 			"Name": "Calanguinho", "Description": "Vire um calanguinho! Diminua de tamanho e fique mais rápido!\nAperte a tecla Q para usar.\nEste poder substituirá o atual.", "Unique": true, "Active": false, "Function": "power_calango", "Params": []
 			}, 
+		"104": {
+			"Name": "Muito mais vida", "Description": "Aumenta a chance de aparecer vida em 30%", "Unique": false, "Active": false, "Function": "chance_heal_up", "Params": [30.0]
+			}
 	},
 	"Rare":{
 		"201": {
@@ -44,6 +50,9 @@ extends Node
 			},
 		"203": {
 			"Name": "Latido Super Sônico", "Description": "Dê um latido poderoso que dá um bom dano em área.\nAperte a tecla Q para usar.\nEste poder substituirá o atual.", "Unique": true, "Active": true, "Function": "super_sonic_bark", "Params": []
+			},
+		"204": {
+			"Name": "Recebe mais vida", "Description": "Receba mais uma vida das comidas.", "Unique": false, "Active": false, "Function": "healing_up", "Params": [1]
 			}
 	}
 	}
@@ -56,6 +65,7 @@ var calango = false
 var calango_veloc = 0
 var power = false
 var power_name = ""
+var power_cooldown = 60
 
 func restart():
 	player_life = 5
@@ -76,6 +86,7 @@ func restart():
 	spawn_life = 50
 	heal = 1
 	max_player_life = 5
+	power_cooldown = 60
 
 #aqui ele verifica se é unico ou nao para adicionar na lista e tambem verifica se é uma habilidade ativa para ser a habilidade atual
 func chosen_power(id, rarity):
@@ -110,3 +121,9 @@ func damage_up(percentage):
 func super_sonic_bark():
 	power = true
 	power_name = "bark"
+
+func chance_heal_up(chance):
+	spawn_life += (spawn_life * chance/100)
+
+func healing_up(heal_value):
+	heal += heal_value

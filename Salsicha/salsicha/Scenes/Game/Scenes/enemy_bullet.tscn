@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bl0cu1di6up8k"]
+[gd_scene load_steps=6 format=3 uid="uid://bl0cu1di6up8k"]
 
 [ext_resource type="Script" uid="uid://c8p8u5xl8slo4" path="res://Scenes/Game/Scripts/enemy_bullet.gd" id="1_mhqj8"]
 [ext_resource type="Texture2D" uid="uid://6a7nqbsqhqyk" path="res://Scenes/Game/Images/enemy_bullet.png" id="2_mhqj8"]
+[ext_resource type="Texture2D" uid="uid://inyon5shlj1g" path="res://Scenes/Game/Images/enemy_bullet_2.png" id="3_xslgl"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mhqj8"]
 animations = [{
@@ -13,7 +14,10 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_xslgl")
+}],
 "loop": true,
 "name": &"strong",
 "speed": 5.0

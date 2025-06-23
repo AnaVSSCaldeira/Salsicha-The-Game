@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://cac3plj0yo8cx"]
+[gd_scene load_steps=14 format=3 uid="uid://cac3plj0yo8cx"]
 
 [ext_resource type="Texture2D" uid="uid://ckdmaqm864hx5" path="res://Scenes/Game/Images/salsicha.png" id="1_77n5s"]
 [ext_resource type="Script" uid="uid://bofuk06ms33re" path="res://Scenes/Game/Scripts/Salsicha.gd" id="1_vb0mm"]
 [ext_resource type="Texture2D" uid="uid://o2248681emfc" path="res://Scenes/Game/Images/salsicha_dash.png" id="2_vb4gv"]
 [ext_resource type="Texture2D" uid="uid://dqp20g16alci1" path="res://Scenes/Game/Images/salsicha_mochila.png" id="3_h1q7p"]
 [ext_resource type="AudioStream" uid="uid://n041bw5ppic5" path="res://Scenes/Game/Musics and sfx/bark1.mp3" id="5_untws"]
+[ext_resource type="Texture2D" uid="uid://djouyd708vti7" path="res://Scenes/Game/Images/cd_line.png" id="5_xa4f7"]
+[ext_resource type="Texture2D" uid="uid://bkxx0gyoype3n" path="res://Scenes/Game/Images/cd_content.png" id="6_m82o3"]
 [ext_resource type="AudioStream" uid="uid://2r7ub34y7g6v" path="res://Scenes/Game/Musics and sfx/dog_die.mp3" id="6_xa4f7"]
 [ext_resource type="AudioStream" uid="uid://0yf7fe86fs6a" path="res://Scenes/Game/Musics and sfx/dog_hurt.mp3" id="7_m82o3"]
 
@@ -64,6 +66,18 @@ shape = SubResource("RectangleShape2D_vw0nc")
 position = Vector2(3, -5)
 shape = SubResource("RectangleShape2D_vb4gv")
 
+[node name="Cooldown_image" type="TextureProgressBar" parent="."]
+offset_left = -24.0
+offset_top = -89.0
+offset_right = 26.0
+offset_bottom = -39.0
+max_value = 5.0
+fill_mode = 4
+texture_under = ExtResource("6_m82o3")
+texture_over = ExtResource("5_xa4f7")
+texture_progress = ExtResource("6_m82o3")
+tint_under = Color(0, 0, 0, 0.192157)
+
 [node name="Invulnerable_timer" type="Timer" parent="."]
 wait_time = 0.675
 
@@ -76,6 +90,7 @@ wait_time = 2.0
 one_shot = true
 
 [node name="Power_cooldown" type="Timer" parent="."]
+one_shot = true
 
 [node name="bark_power" type="AudioStreamPlayer" parent="."]
 process_mode = 3

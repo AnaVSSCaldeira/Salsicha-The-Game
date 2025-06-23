@@ -49,7 +49,7 @@ func setup(enemy_type):
 			$Life.value = 5
 		"strong":
 			$AnimatedSprite2D.play("strong")
-			$Life.max_value = 5
-			$Life.value = 5
+			$Life.max_value = 8
+			$Life.value = 8
 
 	$Life.visible = false

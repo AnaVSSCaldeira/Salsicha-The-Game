@@ -1,26 +1,46 @@
-[gd_scene load_steps=4 format=3 uid="uid://wcwend7ncywa"]
+[gd_scene load_steps=8 format=3 uid="uid://wcwend7ncywa"]
 
 [ext_resource type="Texture2D" uid="uid://bqyfc00hkdkyi" path="res://Scenes/Game/Images/ground_rock.png" id="1_0vxud"]
 [ext_resource type="Script" uid="uid://bx7d40u087ben" path="res://Scenes/Game/Scripts/power_card.gd" id="1_bpfxr"]
+[ext_resource type="Texture2D" uid="uid://d2t73553vu17g" path="res://Scenes/Game/Images/common_card.png" id="2_p6h5l"]
+[ext_resource type="Texture2D" uid="uid://c2jptv4ehdusp" path="res://Scenes/Game/Images/rare_card.png" id="3_2shs0"]
+[ext_resource type="Texture2D" uid="uid://b5xijrvedrrl1" path="res://Scenes/Game/Images/uncommon_card.png" id="4_vwp18"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bpfxr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_p6h5l")
+}],
+"loop": true,
+"name": &"Common",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_2shs0")
+}],
+"loop": true,
+"name": &"Rare",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_vwp18")
+}],
+"loop": true,
+"name": &"Uncommon",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_db60f"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_0vxud")
 }],
 "loop": true,
-"name": &"common",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"rare",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"uncommon",
+"name": &"1",
 "speed": 5.0
 }]
 
@@ -29,10 +49,11 @@ scale = Vector2(0.980727, 0.980727)
 script = ExtResource("1_bpfxr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(327.308, 550.612)
-scale = Vector2(13.0108, 21.9021)
+texture_filter = 1
+position = Vector2(329.348, 550.612)
+scale = Vector2(4.3777, 4.3777)
 sprite_frames = SubResource("SpriteFrames_bpfxr")
-animation = &"uncommon"
+animation = &"Uncommon"
 
 [node name="Control" type="Control" parent="."]
 anchors_preset = 0
@@ -41,17 +62,17 @@ offset_bottom = 40.0
 
 [node name="PowerImage" type="AnimatedSprite2D" parent="Control"]
 modulate = Color(0, 0.00784314, 0.0666667, 1)
-position = Vector2(326.289, 195.773)
-scale = Vector2(12.38, 7.29)
-sprite_frames = SubResource("SpriteFrames_bpfxr")
-animation = &"common"
+position = Vector2(328.328, 179.459)
+scale = Vector2(11.9095, 5.79162)
+sprite_frames = SubResource("SpriteFrames_db60f")
+animation = &"1"
 
 [node name="Name" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = 28.0
-offset_top = 395.0
-offset_right = 608.0
-offset_bottom = 464.0
+offset_left = 21.0
+offset_top = 358.0
+offset_right = 637.0
+offset_bottom = 427.0
 theme_override_font_sizes/font_size = 50
 text = "TESTE"
 horizontal_alignment = 1
@@ -59,17 +80,17 @@ autowrap_mode = 1
 
 [node name="Description" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = 25.0
-offset_top = 476.0
-offset_right = 628.0
-offset_bottom = 1049.0
+offset_left = 30.0
+offset_top = 475.0
+offset_right = 633.0
+offset_bottom = 1075.0
 theme_override_font_sizes/font_size = 50
 text = "TESTE TESTE TESTEfsdfsfsfsdfffffddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
 autowrap_mode = 1
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 3.0
-offset_top = 4.0
-offset_right = 652.0
-offset_bottom = 1097.0
+offset_left = 6.11791
+offset_top = 9.17687
+offset_right = 655.118
+offset_bottom = 1095.18

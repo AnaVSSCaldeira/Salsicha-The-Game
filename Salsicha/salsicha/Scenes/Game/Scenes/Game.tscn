@@ -88,5 +88,21 @@ process_mode = 3
 volume_db = -20.0
 autoplay = true
 
+[node name="Wave" type="Label" parent="."]
+offset_left = 859.0
+offset_top = 11.0
+offset_right = 1005.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 50
+text = "Wave: "
+
+[node name="Count" type="Label" parent="Wave"]
+layout_mode = 0
+offset_left = 159.0
+offset_right = 245.0
+offset_bottom = 69.0
+theme_override_font_sizes/font_size = 50
+text = "999"
+
 [connection signal="pressed" from="Screen/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="Screen/Exit" to="." method="_on_exit_pressed"]

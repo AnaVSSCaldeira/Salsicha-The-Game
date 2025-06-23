@@ -18,6 +18,7 @@ func _ready():
 	scale = Vector2(1,1)
 	calango = 0
 	power = false
+	$Cooldown_image.visible = false
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -59,6 +60,12 @@ func _physics_process(delta):
 
 	move_and_slide()
 
+func _process(delta):
+	if $Power_cooldown.is_stopped() == false:
+		$Cooldown_image.value = $Power_cooldown.wait_time - $Power_cooldown.time_left
+	else:
+		$Cooldown_image.value = 0
+
 func _input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT and ammo_delay == false:
 		var  bullet = preload("res://Scenes/Game/Scenes/bullet.tscn").instantiate()
@@ -81,7 +88,9 @@ func _input(event):
 				power_bullet.get_node("AnimatedSprite2D").play(global.power_name)
 				power_bullet.global_position = Vector2(global_position.x,global_position.y-100)
 				get_tree().current_scene.add_child(power_bullet)
-				$Power_cooldown.start(300)
+				$Cooldown_image.visible = true
+				$Cooldown_image.max_value = global.power_cooldown + 60
+				$Power_cooldown.start(global.power_cooldown + 60)
 				power = true
 				$bark_power.play()
 
@@ -126,7 +135,10 @@ func _on_shoot_delay_timeout():
 func _on_power_timer_timeout():
 	scale = Vector2(1,1)
 	calango = 0
-	$Power_cooldown.start(150)
+	$Cooldown_image.visible = true
+	$Cooldown_image.max_value = global.power_cooldown
+	$Power_cooldown.start(global.power_cooldown)
 
 func _on_power_cooldown_timeout():
 	power = false
+	$Cooldown_image.visible = false
