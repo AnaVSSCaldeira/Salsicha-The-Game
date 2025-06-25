@@ -8,7 +8,7 @@ var invulnerable = false
 var invulnerable_count = 0
 var enemy = preload("res://Scenes/Game/Scenes/enemy.tscn")
 var waves_list = {"0": {"enemies_list": [enemy], "types":["default"]},"1": {"enemies_list": [enemy, enemy, enemy], "types":["default", "default", "default"]}, "2": {"enemies_list": [enemy, enemy, enemy, enemy], "types":["default", "default", "default", "default"]}, "3": {"enemies_list": [enemy, enemy, enemy, enemy], "types":["default", "default", "default", "default"]}, "4": {"enemies_list": [enemy, enemy, enemy, enemy], "types":["default", "default", "default", "strong"]}, "5": {"enemies_list": [enemy, enemy, enemy, enemy, enemy], "types":["default", "default", "strong", "strong", "default"]}, "6": {"enemies_list": [enemy, enemy, enemy, enemy, enemy], "types":["default", "default", "strong", "strong", "strong"]}, "7": {"enemies_list": [enemy, enemy, enemy, enemy, enemy], "types":["default", "default", "strong", "strong", "strong"]}, "8": {"enemies_list": [enemy, enemy, enemy, enemy, enemy], "types":["default", "strong", "strong", "strong", "strong"]}, "9": {"enemies_list": [enemy, enemy, enemy, enemy, enemy], "types":["strong", "strong", "strong", "strong", "strong"]}, "10": {"enemies_list": [enemy], "types":["strong"]}}
-var wave = 4
+var wave = 0
 var kill_monsters = 0
 
 func _ready():
@@ -23,6 +23,9 @@ func _ready():
 	hud_variables.get_node("Veloc bullet").get_node("count").text = str(global.bullet_speed)
 
 func _process(delta):
+	if global.player_life_change:
+		heartsConteiner.addMoreHearts(1)
+		global.player_life_change = false
 	hud_variables.get_node("Attack").get_node("count").text = str(global.bullet_damage)
 	hud_variables.get_node("Veloc player").get_node("count").text = str(global.player_speed)
 	hud_variables.get_node("Veloc bullet").get_node("count").text = str(global.bullet_speed)
@@ -36,7 +39,11 @@ func game_over():
 	get_tree().paused = true
 
 func get_powers():
-	for node in get_tree().get_nodes_in_group("enemies_bullet"):
+	for node in get_tree().get_nodes_in_group("bullet"):
+		node.queue_free()
+	for node in get_tree().get_nodes_in_group("enemy_bullet"):
+		node.queue_free()
+	for node in get_tree().get_nodes_in_group("healing"):
 		node.queue_free()
 	get_tree().paused = true
 	$"Powers Spawner/Screen".visible = true
@@ -67,10 +74,13 @@ func _on_exit_pressed():
 func wave_ends():
 	kill_monsters -= 1
 	if kill_monsters == 0:
-		wave += 1
-		get_powers()
+		$Delay_new_wave.start()
 
 func _on_restart_pressed():
 	get_tree().paused = false
 	global.restart()
 	get_tree().reload_current_scene()
+
+func _on_delay_new_wave_timeout():
+	wave += 1
+	get_powers()

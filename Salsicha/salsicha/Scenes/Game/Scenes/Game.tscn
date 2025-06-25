@@ -89,10 +89,10 @@ volume_db = -20.0
 autoplay = true
 
 [node name="Wave" type="Label" parent="."]
-offset_left = 859.0
-offset_top = 11.0
-offset_right = 1005.0
-offset_bottom = 80.0
+offset_left = 88.0
+offset_top = 128.0
+offset_right = 247.0
+offset_bottom = 197.0
 theme_override_font_sizes/font_size = 50
 text = "Wave: "
 
@@ -104,5 +104,10 @@ offset_bottom = 69.0
 theme_override_font_sizes/font_size = 50
 text = "999"
 
+[node name="Delay_new_wave" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="pressed" from="Screen/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="Screen/Exit" to="." method="_on_exit_pressed"]
+[connection signal="timeout" from="Delay_new_wave" to="." method="_on_delay_new_wave_timeout"]

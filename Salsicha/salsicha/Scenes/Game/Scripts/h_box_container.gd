@@ -35,11 +35,11 @@ func create_powers():
 		powers_list.append(power)
 		card.get_node("Control").get_node("Name").text = powers_by_rarity[str(power)]["Name"]
 		card.get_node("Control").get_node("Description").text = powers_by_rarity[str(power)]["Description"]
-		card.get_node("AnimatedSprite2D").play(card.rarity)
+		card.get_node("AnimatedSprite2D").animation = card.rarity
 		card.id = power
 		
 		# para debug
-		# card.id = 103
+		# card.id = 108
 		# card.rarity = "Uncommon"
 		
 		add_child(card)

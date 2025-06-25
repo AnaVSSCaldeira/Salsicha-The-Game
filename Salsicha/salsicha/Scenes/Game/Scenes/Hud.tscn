@@ -6,22 +6,25 @@
 layer = 0
 
 [node name="Hearts" type="HBoxContainer" parent="."]
-offset_right = 244.0
+offset_left = 30.0
+offset_right = 274.0
 offset_bottom = 83.0
 script = ExtResource("1_tqw2f")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 visible = false
 offset_left = 33.0
-offset_top = 59.0
-offset_right = 78.0
-offset_bottom = 136.0
+offset_top = 132.0
+offset_right = 150.0
+offset_bottom = 209.0
 
 [node name="Attack" type="Label" parent="VBoxContainer"]
+texture_filter = 1
 layout_mode = 2
 text = "Player attack:"
 
 [node name="count" type="Label" parent="VBoxContainer/Attack"]
+texture_filter = 1
 layout_mode = 2
 offset_left = 109.0
 offset_right = 215.0
@@ -29,20 +32,26 @@ offset_bottom = 23.0
 text = "999"
 
 [node name="Veloc player" type="Label" parent="VBoxContainer"]
+texture_filter = 1
 layout_mode = 2
 text = "Player velocity:"
 
 [node name="count" type="Label" parent="VBoxContainer/Veloc player"]
+texture_filter = 1
+layout_mode = 0
 offset_left = 121.0
 offset_right = 227.0
 offset_bottom = 23.0
 text = "999"
 
 [node name="Veloc bullet" type="Label" parent="VBoxContainer"]
+texture_filter = 1
 layout_mode = 2
 text = "Bullet velocity:"
 
 [node name="count" type="Label" parent="VBoxContainer/Veloc bullet"]
+texture_filter = 1
+layout_mode = 0
 offset_left = 117.0
 offset_right = 223.0
 offset_bottom = 23.0

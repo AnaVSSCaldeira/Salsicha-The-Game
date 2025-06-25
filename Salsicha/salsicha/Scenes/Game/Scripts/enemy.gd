@@ -27,7 +27,7 @@ func take_damage(damage):
 			else:
 				food_name = "cenoura"
 
-			food.get_node("AnimatedSprite2D").play(food_name)
+			food.get_node("AnimatedSprite2D").animation = food_name
 			food.global_position = Vector2(global_position.x,global_position.y)
 			get_tree().current_scene.add_child(food)
 		get_parent().wave_ends()
@@ -36,7 +36,7 @@ func take_damage(damage):
 func _on_timer_timeout():
 	var  bullet = preload("res://Scenes/Game/Scenes/enemy_bullet.tscn").instantiate()
 	bullet.setup(bullet_type)
-	bullet.get_node("AnimatedSprite2D").play(bullet_type)
+	bullet.get_node("AnimatedSprite2D").animation = bullet_type
 	bullet.global_position = Vector2(global_position.x,global_position.y+100)
 	get_tree().current_scene.add_child(bullet)
 
@@ -44,11 +44,11 @@ func setup(enemy_type):
 	bullet_type = enemy_type
 	match enemy_type:
 		"default":
-			$AnimatedSprite2D.play("default")
+			$AnimatedSprite2D.animation = "default"
 			$Life.max_value = 5
 			$Life.value = 5
 		"strong":
-			$AnimatedSprite2D.play("strong")
+			$AnimatedSprite2D.animation = "strong"
 			$Life.max_value = 8
 			$Life.value = 8
 

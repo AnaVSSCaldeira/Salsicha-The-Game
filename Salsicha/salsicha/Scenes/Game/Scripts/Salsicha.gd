@@ -1,7 +1,5 @@
 extends CharacterBody2D
 
-const JUMP_VELOCITY = -500.0
-
 @onready var global = $"/root/Global"
 
 var run
@@ -10,23 +8,36 @@ var invulnerable_count
 var ammo_delay = false
 var power = false
 var calango
+var jump_count = 0
+var current_animation = "default"
+var shield = true
 
 func _ready():
 	$ball_dash_collision.disabled = true
-	$AnimatedSprite2D.animation = "default"
+	$AnimatedSprite2D.animation = current_animation
 	$mochila.visible = true
+	$mochila.animation = current_animation
 	scale = Vector2(1,1)
 	calango = 0
 	power = false
 	$Cooldown_image.visible = false
+	$Shield.visible = false
+	$Shield/CollisionShape2D.disabled = true
 
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-		$dog_jump.play()
+	if Input.is_action_just_pressed("ui_accept"):
+		if is_on_floor():
+			jump_count = 0
+			velocity.y = global.player_jump
+			$dog_jump.play()
+		else:
+			if global.can_double_jump and jump_count < 1:
+				velocity.y = global.player_jump
+				$dog_jump.play()
+				jump_count += 1
 
 	var direction = Input.get_axis("left", "right")
 	if direction:
@@ -43,7 +54,7 @@ func _physics_process(delta):
 		else:
 			$salsicha_collision.disabled = false
 			$ball_dash_collision.disabled = true
-			$AnimatedSprite2D.animation = "default"
+			$AnimatedSprite2D.animation = current_animation
 			$mochila.visible = true
 			run = 0
 
@@ -65,6 +76,11 @@ func _process(delta):
 		$Cooldown_image.value = $Power_cooldown.wait_time - $Power_cooldown.time_left
 	else:
 		$Cooldown_image.value = 0
+	
+	if shield and global.gain_shield:
+		$Shield.visible = true
+		$Shield/CollisionShape2D.disabled = false
+		shield = false
 
 func _input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT and ammo_delay == false:
@@ -78,6 +94,9 @@ func _input(event):
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_Q:
 			if $"/root/Global".calango and power == false:
+				current_animation = "calango"
+				$AnimatedSprite2D.animation = current_animation
+				$mochila.animation = current_animation
 				scale = Vector2(0.5,0.5)
 				calango = $"/root/Global".calango_veloc
 				$Power_timer.start(2.0)
@@ -89,8 +108,8 @@ func _input(event):
 				power_bullet.global_position = Vector2(global_position.x,global_position.y-100)
 				get_tree().current_scene.add_child(power_bullet)
 				$Cooldown_image.visible = true
-				$Cooldown_image.max_value = global.power_cooldown + 60
-				$Power_cooldown.start(global.power_cooldown + 60)
+				$Cooldown_image.max_value = global.power_cooldown + 15
+				$Power_cooldown.start(global.power_cooldown + 15)
 				power = true
 				$bark_power.play()
 
@@ -110,8 +129,8 @@ func player_damage(damage):
 		$Invulnerable_timer.start(0.25)
 
 func healing(heal_value):
-	if global.player_life > global.max_player_life or global.player_life + heal_value > 5:
-		global.player_life = 5
+	if global.player_life > global.max_player_life or global.player_life + heal_value > global.max_player_life:
+		global.player_life = global.max_player_life
 	else:
 		global.player_life += heal_value
 		
@@ -137,6 +156,9 @@ func _on_power_timer_timeout():
 	calango = 0
 	$Cooldown_image.visible = true
 	$Cooldown_image.max_value = global.power_cooldown
+	current_animation = "default"
+	$AnimatedSprite2D.animation = current_animation
+	$mochila.animation = current_animation
 	$Power_cooldown.start(global.power_cooldown)
 
 func _on_power_cooldown_timeout():

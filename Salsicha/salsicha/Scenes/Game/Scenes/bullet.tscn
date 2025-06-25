@@ -1,11 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdslfw60ff2wg"]
+[gd_scene load_steps=7 format=3 uid="uid://cdslfw60ff2wg"]
 
 [ext_resource type="Script" uid="uid://rdr4r7v7nk0j" path="res://Scenes/Game/Scripts/bullet.gd" id="1_lc1vq"]
+[ext_resource type="Texture2D" uid="uid://u20eghwb7fpc" path="res://Scenes/Game/Images/osso.png" id="2_bs50u"]
 [ext_resource type="Texture2D" uid="uid://d4f7imwtwjtin" path="res://Scenes/Game/Images/bullet.png" id="2_lc1vq"]
 [ext_resource type="Texture2D" uid="uid://bxpkmm7bfbnmy" path="res://Scenes/Game/Images/hotdog.png" id="3_gs3cq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lc1vq"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bs50u")
+}],
+"loop": true,
+"name": &"bone",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_lc1vq")
@@ -27,7 +36,7 @@ animations = [{
 radius = 41.0
 height = 82.0
 
-[node name="Bullet" type="Area2D"]
+[node name="Bullet" type="Area2D" groups=["bullet"]]
 script = ExtResource("1_lc1vq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

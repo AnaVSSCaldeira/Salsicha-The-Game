@@ -38,7 +38,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5xgw5"]
 size = Vector2(87, 86)
 
-[node name="comida" type="CharacterBody2D"]
+[node name="comida" type="CharacterBody2D" groups=["healing"]]
 collision_mask = 2
 script = ExtResource("1_5xgw5")
 

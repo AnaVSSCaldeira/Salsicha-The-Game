@@ -23,8 +23,8 @@ func _on_body_entered(body:Node2D):
 func setup(bullet_type):
 	match bullet_type:
 		"default":
-			$AnimatedSprite2D.play(bullet_type)
+			$AnimatedSprite2D.animation = bullet_type
 			bullet_damage = 1
 		"strong":
-			$AnimatedSprite2D.play(bullet_type)
+			$AnimatedSprite2D.animation = bullet_type
 			bullet_damage = 3
