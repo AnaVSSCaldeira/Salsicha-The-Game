@@ -64,7 +64,7 @@ theme_override_font_sizes/font_size = 40
 text = "Sair"
 
 [node name="Spawn" parent="." instance=ExtResource("6_r3fxi")]
-position = Vector2(965, 220)
+position = Vector2(972, 220)
 
 [node name="Sprite2D" parent="." instance=ExtResource("6_fxxe4")]
 position = Vector2(960, 539.5)
@@ -107,6 +107,12 @@ text = "999"
 [node name="Delay_new_wave" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="P1" type="Marker2D" parent="."]
+position = Vector2(237, 331)
+
+[node name="P2" type="Marker2D" parent="."]
+position = Vector2(1596, 331)
 
 [connection signal="pressed" from="Screen/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="Screen/Exit" to="." method="_on_exit_pressed"]

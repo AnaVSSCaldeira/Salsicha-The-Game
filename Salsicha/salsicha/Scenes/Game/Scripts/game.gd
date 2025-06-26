@@ -4,11 +4,14 @@ extends Node2D
 @onready var heartsConteiner = $HUD.get_node("Hearts")
 @onready var global = $"/root/Global"
 @onready var wave_label = $Wave/Count
+@onready var p1_position = $P1.position
+@onready var p2_position = $P2.position
 var invulnerable = false
 var invulnerable_count = 0
 var enemy = preload("res://Scenes/Game/Scenes/enemy.tscn")
-var waves_list = {"0": {"enemies_list": [enemy], "types":["default"]},"1": {"enemies_list": [enemy, enemy, enemy], "types":["default", "default", "default"]}, "2": {"enemies_list": [enemy, enemy, enemy, enemy], "types":["default", "default", "default", "default"]}, "3": {"enemies_list": [enemy, enemy, enemy, enemy], "types":["default", "default", "default", "default"]}, "4": {"enemies_list": [enemy, enemy, enemy, enemy], "types":["default", "default", "default", "strong"]}, "5": {"enemies_list": [enemy, enemy, enemy, enemy, enemy], "types":["default", "default", "strong", "strong", "default"]}, "6": {"enemies_list": [enemy, enemy, enemy, enemy, enemy], "types":["default", "default", "strong", "strong", "strong"]}, "7": {"enemies_list": [enemy, enemy, enemy, enemy, enemy], "types":["default", "default", "strong", "strong", "strong"]}, "8": {"enemies_list": [enemy, enemy, enemy, enemy, enemy], "types":["default", "strong", "strong", "strong", "strong"]}, "9": {"enemies_list": [enemy, enemy, enemy, enemy, enemy], "types":["strong", "strong", "strong", "strong", "strong"]}, "10": {"enemies_list": [enemy], "types":["strong"]}}
-var wave = 0
+var boss = preload("res://Scenes/Game/Scenes/Boss.tscn")
+var waves_list = {"0": {"enemies_list": [enemy], "types":["default"]},"1": {"enemies_list": [enemy, enemy, enemy], "types":["default", "default", "default"]}, "2": {"enemies_list": [enemy, enemy, enemy, enemy], "types":["default", "default", "default", "default"]}, "3": {"enemies_list": [enemy, enemy, enemy, enemy], "types":["default", "default", "default", "default"]}, "4": {"enemies_list": [enemy, enemy, enemy, enemy], "types":["default", "default", "default", "strong"]}, "5": {"enemies_list": [enemy, enemy, enemy, enemy, enemy], "types":["default", "default", "strong", "strong", "default"]}, "6": {"enemies_list": [enemy, enemy, enemy, enemy, enemy], "types":["default", "default", "strong", "strong", "strong"]}, "7": {"enemies_list": [enemy, enemy, enemy, enemy, enemy], "types":["default", "default", "strong", "strong", "strong"]}, "8": {"enemies_list": [enemy, enemy, enemy, enemy, enemy], "types":["default", "strong", "strong", "strong", "strong"]}, "9": {"enemies_list": [enemy, enemy, enemy, enemy, enemy], "types":["strong", "strong", "strong", "strong", "strong"]}, "10": {"enemies_list": [boss], "types":["default"]}}
+var wave = 10
 var kill_monsters = 0
 
 func _ready():
@@ -32,7 +35,7 @@ func _process(delta):
 
 func _spawner():
 	kill_monsters = len(waves_list[str(wave)]["enemies_list"])
-	$Spawn.enemy_wave(waves_list, wave)
+	$Spawn.enemy_wave(waves_list, wave, p1_position, p2_position)
 
 func game_over():
 	$Screen.visible = true
@@ -66,7 +69,7 @@ func new_wave():
 		wave_label.text = str(wave+1)
 		get_tree().paused = false
 		kill_monsters = len(waves_list[str(wave)]["enemies_list"])
-		$Spawn.enemy_wave(waves_list, wave)
+		$Spawn.enemy_wave(waves_list, wave, p1_position, p2_position)
 
 func _on_exit_pressed():
 	get_tree().quit()

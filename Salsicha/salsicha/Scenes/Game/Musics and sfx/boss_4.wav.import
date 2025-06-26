@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cbgkh4f0mx54d"
+path="res://.godot/imported/boss_4.wav-2012080d91a6722407faf59711a6b19a.sample"
+
+[deps]
+
+source_file="res://Scenes/Game/Musics and sfx/boss_4.wav"
+dest_files=["res://.godot/imported/boss_4.wav-2012080d91a6722407faf59711a6b19a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

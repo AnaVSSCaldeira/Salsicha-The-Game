@@ -1,0 +1,62 @@
+[gd_scene load_steps=12 format=3 uid="uid://tto4uaantomo"]
+
+[ext_resource type="Texture2D" uid="uid://c8ddim0ky6d5y" path="res://Scenes/Game/Images/boss.png" id="1_xsg27"]
+[ext_resource type="Script" uid="uid://cfxv54lywv31v" path="res://Scenes/Game/Scripts/boss.gd" id="1_ysqax"]
+[ext_resource type="AudioStream" uid="uid://cbgkh4f0mx54d" path="res://Scenes/Game/Musics and sfx/boss_4.wav" id="2_nvjf2"]
+[ext_resource type="AudioStream" uid="uid://by3tr0eslg7ii" path="res://Scenes/Game/Musics and sfx/boss_6.wav" id="3_1le80"]
+[ext_resource type="AudioStream" uid="uid://cxk3gfkxxf1jc" path="res://Scenes/Game/Musics and sfx/boss_1.wav" id="3_xysa3"]
+[ext_resource type="AudioStream" uid="uid://chcl6bs1b8wr4" path="res://Scenes/Game/Musics and sfx/boss2.wav" id="4_1le80"]
+[ext_resource type="AudioStream" uid="uid://b1ye713knvbno" path="res://Scenes/Game/Musics and sfx/boss_5.wav" id="5_w7xas"]
+[ext_resource type="AudioStream" uid="uid://8pb8ufhdkkvb" path="res://Scenes/Game/Musics and sfx/boss_3.wav" id="6_6gywy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ysqax"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xsg27")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xsg27"]
+size = Vector2(209, 212)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ysqax"]
+size = Vector2(230, 234)
+
+[node name="Boss" type="CharacterBody2D" groups=["enemies"]]
+script = ExtResource("1_ysqax")
+die = ExtResource("2_nvjf2")
+laugh = ExtResource("3_1le80")
+attack_1 = ExtResource("3_xysa3")
+attack_2 = ExtResource("4_1le80")
+attack_3 = ExtResource("5_w7xas")
+damage_1 = ExtResource("6_6gywy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_ysqax")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xsg27")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_ysqax")
+
+[node name="Action" type="Timer" parent="."]
+one_shot = true
+
+[node name="Boss_sounds" type="AudioStreamPlayer" parent="."]
+
+[node name="Life" type="ProgressBar" parent="."]
+offset_left = -115.0
+offset_top = -154.0
+offset_right = 115.0
+offset_bottom = -127.0
+value = 100.0
+
+[connection signal="timeout" from="Action" to="." method="_on_action_timeout"]
