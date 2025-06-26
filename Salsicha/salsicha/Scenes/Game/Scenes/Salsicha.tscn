@@ -66,6 +66,7 @@ size = Vector2(60, 95)
 size = Vector2(78, 60)
 
 [node name="Salsicha" type="CharacterBody2D" groups=["player"]]
+z_index = 1
 collision_mask = 2
 script = ExtResource("1_vb0mm")
 

@@ -1,10 +1,30 @@
-[gd_scene load_steps=8 format=3 uid="uid://wcwend7ncywa"]
+[gd_scene load_steps=28 format=3 uid="uid://wcwend7ncywa"]
 
-[ext_resource type="Texture2D" uid="uid://bqyfc00hkdkyi" path="res://Scenes/Game/Images/ground_rock.png" id="1_0vxud"]
 [ext_resource type="Script" uid="uid://bx7d40u087ben" path="res://Scenes/Game/Scripts/power_card.gd" id="1_bpfxr"]
 [ext_resource type="Texture2D" uid="uid://d2t73553vu17g" path="res://Scenes/Game/Images/common_card.png" id="2_p6h5l"]
 [ext_resource type="Texture2D" uid="uid://c2jptv4ehdusp" path="res://Scenes/Game/Images/rare_card.png" id="3_2shs0"]
 [ext_resource type="Texture2D" uid="uid://b5xijrvedrrl1" path="res://Scenes/Game/Images/uncommon_card.png" id="4_vwp18"]
+[ext_resource type="Texture2D" uid="uid://leir0rv4akf1" path="res://Scenes/Game/Images/1.png" id="5_p6h5l"]
+[ext_resource type="Texture2D" uid="uid://dj20xkisclpdm" path="res://Scenes/Game/Images/101.png" id="6_xfuwy"]
+[ext_resource type="Texture2D" uid="uid://cghm4xe5ydktf" path="res://Scenes/Game/Images/102.png" id="7_7jh5i"]
+[ext_resource type="Texture2D" uid="uid://hewh6xkupytu" path="res://Scenes/Game/Images/103.png" id="8_sh4ja"]
+[ext_resource type="Texture2D" uid="uid://qepe3firtu4x" path="res://Scenes/Game/Images/104.png" id="9_vuemp"]
+[ext_resource type="Texture2D" uid="uid://ctoiha838i8rh" path="res://Scenes/Game/Images/105.png" id="10_6i28t"]
+[ext_resource type="Texture2D" uid="uid://deio45aci8fhb" path="res://Scenes/Game/Images/106.png" id="11_ctixv"]
+[ext_resource type="Texture2D" uid="uid://v16i4mrw7vfu" path="res://Scenes/Game/Images/107.png" id="12_ehny0"]
+[ext_resource type="Texture2D" uid="uid://evkiavyiwcxv" path="res://Scenes/Game/Images/108.png" id="13_ratsu"]
+[ext_resource type="Texture2D" uid="uid://dx8mwuqe8bd0i" path="res://Scenes/Game/Images/2.png" id="14_5kc2u"]
+[ext_resource type="Texture2D" uid="uid://dk8f5bic33w4r" path="res://Scenes/Game/Images/201.png" id="15_10vpv"]
+[ext_resource type="Texture2D" uid="uid://2khrsqyx5fig" path="res://Scenes/Game/Images/202.png" id="16_cq1bo"]
+[ext_resource type="Texture2D" uid="uid://djot2t3xqbnmx" path="res://Scenes/Game/Images/203.png" id="17_bu274"]
+[ext_resource type="Texture2D" uid="uid://budgu60o47l38" path="res://Scenes/Game/Images/204.png" id="18_g3nwb"]
+[ext_resource type="Texture2D" uid="uid://biilwgavgyend" path="res://Scenes/Game/Images/205.png" id="19_u5qnb"]
+[ext_resource type="Texture2D" uid="uid://dfrfpvis44xwn" path="res://Scenes/Game/Images/206.png" id="20_1ilqg"]
+[ext_resource type="Texture2D" uid="uid://c5b1wemd1wdso" path="res://Scenes/Game/Images/3.png" id="21_jxytq"]
+[ext_resource type="Texture2D" uid="uid://xqvnsbse31hl" path="res://Scenes/Game/Images/4.png" id="22_v6eh5"]
+[ext_resource type="Texture2D" uid="uid://suvr5hafmm1d" path="res://Scenes/Game/Images/5.png" id="23_b40ml"]
+[ext_resource type="Texture2D" uid="uid://dmkbrtri3muc4" path="res://Scenes/Game/Images/6.png" id="24_tu8tw"]
+[ext_resource type="Texture2D" uid="uid://t5uv3lwfcm2s" path="res://Scenes/Game/Images/7.png" id="25_ah8iu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bpfxr"]
 animations = [{
@@ -37,10 +57,170 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_0vxud")
+"texture": ExtResource("5_p6h5l")
 }],
 "loop": true,
 "name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_xfuwy")
+}],
+"loop": true,
+"name": &"101",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_7jh5i")
+}],
+"loop": true,
+"name": &"102",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_sh4ja")
+}],
+"loop": true,
+"name": &"103",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_vuemp")
+}],
+"loop": true,
+"name": &"104",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_6i28t")
+}],
+"loop": true,
+"name": &"105",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_ctixv")
+}],
+"loop": true,
+"name": &"106",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_ehny0")
+}],
+"loop": true,
+"name": &"107",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_ratsu")
+}],
+"loop": true,
+"name": &"108",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_5kc2u")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_10vpv")
+}],
+"loop": true,
+"name": &"201",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_cq1bo")
+}],
+"loop": true,
+"name": &"202",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_bu274")
+}],
+"loop": true,
+"name": &"203",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_g3nwb")
+}],
+"loop": true,
+"name": &"204",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_u5qnb")
+}],
+"loop": true,
+"name": &"205",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_1ilqg")
+}],
+"loop": true,
+"name": &"206",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_jxytq")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_v6eh5")
+}],
+"loop": true,
+"name": &"4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_b40ml")
+}],
+"loop": true,
+"name": &"5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("24_tu8tw")
+}],
+"loop": true,
+"name": &"6",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("25_ah8iu")
+}],
+"loop": true,
+"name": &"7",
 "speed": 5.0
 }]
 
@@ -61,9 +241,8 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="PowerImage" type="AnimatedSprite2D" parent="Control"]
-modulate = Color(0, 0.00784314, 0.0666667, 1)
-position = Vector2(328.328, 179.459)
-scale = Vector2(11.9095, 5.79162)
+position = Vector2(329.254, 178.949)
+scale = Vector2(4.37214, 4.37214)
 sprite_frames = SubResource("SpriteFrames_db60f")
 animation = &"1"
 
@@ -89,6 +268,7 @@ text = "TESTE TESTE TESTEfsdfsfsfsdfffffdddddddddddddddddddddddddddddddddddddddd
 autowrap_mode = 1
 
 [node name="Button" type="Button" parent="."]
+show_behind_parent = true
 layout_mode = 0
 offset_left = 6.11791
 offset_top = 9.17687

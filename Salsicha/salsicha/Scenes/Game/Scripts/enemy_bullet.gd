@@ -28,3 +28,7 @@ func setup(bullet_type):
 		"strong":
 			$AnimatedSprite2D.animation = bullet_type
 			bullet_damage = 3
+		"boss":
+			speed = 700
+			$AnimatedSprite2D.animation = bullet_type
+			bullet_damage = 4

@@ -98,7 +98,7 @@ extends Node
 @export var gain_shield = false
 
 func restart():
-	player_jump = 300
+	player_jump = -500
 	player_life = 5
 	player_life_change = false
 	bullet_type = "default"

@@ -29,6 +29,7 @@ func take_damage(damage):
 
 			food.get_node("AnimatedSprite2D").animation = food_name
 			food.global_position = Vector2(global_position.x,global_position.y)
+			food.setup(false)
 			get_tree().current_scene.add_child(food)
 		get_parent().wave_ends()
 		queue_free()
@@ -36,7 +37,6 @@ func take_damage(damage):
 func _on_timer_timeout():
 	var  bullet = preload("res://Scenes/Game/Scenes/enemy_bullet.tscn").instantiate()
 	bullet.setup(bullet_type)
-	bullet.get_node("AnimatedSprite2D").animation = bullet_type
 	bullet.global_position = Vector2(global_position.x,global_position.y+100)
 	get_tree().current_scene.add_child(bullet)
 

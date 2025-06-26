@@ -50,6 +50,9 @@ shape = SubResource("RectangleShape2D_ysqax")
 [node name="Action" type="Timer" parent="."]
 one_shot = true
 
+[node name="ChocoAttack" type="Timer" parent="."]
+one_shot = true
+
 [node name="Boss_sounds" type="AudioStreamPlayer" parent="."]
 
 [node name="Life" type="ProgressBar" parent="."]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://b21ddrh8ghcky"]
+[gd_scene load_steps=9 format=3 uid="uid://b21ddrh8ghcky"]
 
 [ext_resource type="Script" uid="uid://dxb8hjworuyi3" path="res://Scenes/Game/Scripts/food.gd" id="1_5xgw5"]
 [ext_resource type="Texture2D" uid="uid://btdcxycu52cbe" path="res://Scenes/Game/Images/carne.png" id="1_uutyg"]
 [ext_resource type="Texture2D" uid="uid://cw0q4nhbor8d8" path="res://Scenes/Game/Images/cenoura.png" id="2_5xgw5"]
 [ext_resource type="Texture2D" uid="uid://0ir02mdrhcg2" path="res://Scenes/Game/Images/maca.png" id="3_2p2e8"]
+[ext_resource type="Texture2D" uid="uid://bdppqma414a5i" path="res://Scenes/Game/Images/chocolate.png" id="4_2p2e8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vx2ok"]
 size = Vector2(76, 76)
@@ -24,6 +25,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"cenoura",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_2p2e8")
+}],
+"loop": true,
+"name": &"chocolate",
 "speed": 5.0
 }, {
 "frames": [{
@@ -49,7 +58,7 @@ shape = SubResource("RectangleShape2D_vx2ok")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_l3xou")
-animation = &"carne"
+animation = &"chocolate"
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -57,4 +66,12 @@ animation = &"carne"
 position = Vector2(-0.5, -1)
 shape = SubResource("RectangleShape2D_5xgw5")
 
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Damage" type="Timer" parent="."]
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Damage" to="." method="_on_damage_timeout"]
