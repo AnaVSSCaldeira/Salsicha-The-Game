@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Salsicha"
-run/main_scene="res://Scenes/Game/Scenes/Game.tscn"
+run/main_scene="uid://cjxjdep8xsiyj"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -24,6 +24,14 @@ Global="*res://Scenes/global.gd"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=3
+
+[file_customization]
+
+folder_colors={
+"res://Scenes/": "orange",
+"res://Scenes/Game/": "red",
+"res://Scenes/Menu/": "green"
+}
 
 [global_group]
 

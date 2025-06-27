@@ -10,8 +10,10 @@ extends CharacterBody2D
 @export var attack_2: AudioStreamWAV
 @export var attack_3: AudioStreamWAV
 @export var damage_1: AudioStreamWAV
+@export var healing_1: AudioStreamWAV
+var is_dying = false
 
-var take_break = 10
+var take_break = 5
 var count
 
 func setup(initial, final):
@@ -27,70 +29,81 @@ func _ready():
 	$Life.visible = false
 
 func _physics_process(delta):
-	velocity.x = direction * veloc
-	if position.x >= p2.x:
-		direction = -1
-	elif position.x <= p1.x:
-		direction = 1
-	move_and_slide()
+	if is_dying == false:
+		velocity.x = direction * veloc
+		if position.x >= p2.x:
+			direction = -1
+		elif position.x <= p1.x:
+			direction = 1
+		move_and_slide()
 
 func make_move():
-	if randi_range(1,100) <= take_break:
-		take_break = 10
-		$Action.start(3)
+	if is_dying == false:
+		if randi_range(1,100) <= take_break:
+			take_break = 5
+			$Action.start(3)
 
-	else:
-		var chance = randi_range(1,15)
+		else:
+			var chance = randi_range(1,15)
 
-		if chance >= 1 and chance <= 8:
-			if randi_range(1,4) <= 2:
-				if $Boss_sounds.playing == false:
+			if chance >= 1 and chance <= 8:
+				if randi_range(1,4) <= 2:
 					$Boss_sounds.stream = attack_2
-			else:
-				if $Boss_sounds.playing == false:
+				else:
 					$Boss_sounds.stream = attack_3
 
 				$Boss_sounds.play()
-			shoot()
-			
-		elif (chance >= 9 and chance <= 15):
-			count = 0
-			if $Boss_sounds.playing == false:
+				shoot()
+				
+			elif (chance >= 9 and chance <= 15):
+				count = 0
 				$Boss_sounds.stream = attack_1
 				$Boss_sounds.play()
-			while count < 3:
-				chocolate()
-				$ChocoAttack.start(1)
-				await $ChocoAttack.timeout
-				count += 1
+				while count < 5:
+					chocolate()
+					$ChocoAttack.start(1)
+					await $ChocoAttack.timeout
+					count += 1
 
-		$Action.start(2)
-
-		if $Life.value < $Life.max_value:
-			if randi_range(1,100) <= 50:
-				pass
 			$Action.start(2)
 
-		take_break += 10	
+			if $Life.value < $Life.max_value:
+				if randi_range(1,100) <= 50:
+					$Boss_sounds.stream = healing_1
+					$Boss_sounds.play()
+					healing()
+				$Action.start(2)
+
+			take_break += 5	
+
+func healing():
+	var cure = randi_range(1,10)
+	if cure + $Life.value >= $Life.max_value:
+		$Life.value = $Life.max_value
+	else:
+		$Life.value += cure
 
 func _on_action_timeout():
-	make_move()
+	if is_dying == false:
+		make_move()
 
 func take_damage(damage):
-	if $Life.value <= 0:
-		queue_free()
-
-	if $Life.value == $Life.max_value:
-		$Life.visible = true
-
-	if randi_range(1,100) <= 50:
-		if $Boss_sounds.playing == false:
-			$Boss_sounds.stream = damage_1
+	if is_dying == false:
+		if $Life.value <= 0:
+			is_dying = true
+			$Boss_sounds.stream = die
 			$Boss_sounds.play()
 
-	$Life.value = $Life.value - damage
+		$Life.visible = true
 
-	spawn_food(false)
+		if randi_range(1,100) <= 50:
+			if $Boss_sounds.playing == false:
+				$Boss_sounds.stream = damage_1
+				$Boss_sounds.play()
+
+		$Life.value = $Life.value - damage
+
+		spawn_food(false)
 
 func shoot():
 	var  bullet = preload("res://Scenes/Game/Scenes/enemy_bullet.tscn").instantiate()
@@ -127,3 +140,7 @@ func spawn_food(damage):
 		food.global_position = Vector2(global_position.x,global_position.y+150)
 		
 		get_tree().current_scene.add_child(food)
+
+func _on_boss_sounds_finished():
+	if $Boss_sounds.stream == die:
+		queue_free()

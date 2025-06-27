@@ -29,7 +29,7 @@ func take_damage(damage):
 
 			food.get_node("AnimatedSprite2D").animation = food_name
 			food.global_position = Vector2(global_position.x,global_position.y)
-			food.setup(false)
+			food.setup(food_name)
 			get_tree().current_scene.add_child(food)
 		get_parent().wave_ends()
 		queue_free()

@@ -85,7 +85,7 @@ scale = Vector2(-1, -1)
 
 [node name="Music_theme" type="AudioStreamPlayer" parent="."]
 process_mode = 3
-volume_db = -20.0
+volume_db = -80.0
 autoplay = true
 
 [node name="Wave" type="Label" parent="."]
