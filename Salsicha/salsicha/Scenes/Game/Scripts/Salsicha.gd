@@ -146,10 +146,8 @@ func _on_invulnerable_timer_timeout():
 		$Invulnerable_timer.stop()
 		visible = true
 
-
 func _on_shoot_delay_timeout():
 	ammo_delay = false
-
 
 func _on_power_timer_timeout():
 	scale = Vector2(1,1)

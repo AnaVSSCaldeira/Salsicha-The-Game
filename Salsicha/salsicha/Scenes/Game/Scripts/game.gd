@@ -11,7 +11,7 @@ var invulnerable_count = 0
 var enemy = preload("res://Scenes/Game/Scenes/enemy.tscn")
 var boss = preload("res://Scenes/Game/Scenes/Boss.tscn")
 var waves_list = {"0": {"enemies_list": [enemy], "types":["default"]},"1": {"enemies_list": [enemy, enemy, enemy], "types":["default", "default", "default"]}, "2": {"enemies_list": [enemy, enemy, enemy, enemy], "types":["default", "default", "default", "default"]}, "3": {"enemies_list": [enemy, enemy, enemy, enemy], "types":["default", "default", "default", "default"]}, "4": {"enemies_list": [enemy, enemy, enemy, enemy], "types":["default", "default", "default", "strong"]}, "5": {"enemies_list": [enemy, enemy, enemy, enemy, enemy], "types":["default", "default", "strong", "strong", "default"]}, "6": {"enemies_list": [enemy, enemy, enemy, enemy, enemy], "types":["default", "default", "strong", "strong", "strong"]}, "7": {"enemies_list": [enemy, enemy, enemy, enemy, enemy], "types":["default", "default", "strong", "strong", "strong"]}, "8": {"enemies_list": [enemy, enemy, enemy, enemy, enemy], "types":["default", "strong", "strong", "strong", "strong"]}, "9": {"enemies_list": [enemy, enemy, enemy, enemy, enemy], "types":["strong", "strong", "strong", "strong", "strong"]}, "10": {"enemies_list": [boss], "types":["default"]}}
-var wave = 10
+var wave = 0
 var kill_monsters = 0
 
 func _ready():
@@ -24,6 +24,7 @@ func _ready():
 	hud_variables.get_node("Attack").get_node("count").text = str(global.bullet_damage)
 	hud_variables.get_node("Veloc player").get_node("count").text = str(global.player_speed)
 	hud_variables.get_node("Veloc bullet").get_node("count").text = str(global.bullet_speed)
+	$Pause.visible = false
 
 func _process(delta):
 	if global.player_life_change:
@@ -87,3 +88,13 @@ func _on_restart_pressed():
 func _on_delay_new_wave_timeout():
 	wave += 1
 	get_powers()
+
+func _on_continue_pressed():
+	get_tree().paused = false
+	$Pause.visible = !($Pause.visible)
+
+func _input(event):
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_ESCAPE:
+			get_tree().paused = true
+			$Pause.visible = !($Pause.visible)

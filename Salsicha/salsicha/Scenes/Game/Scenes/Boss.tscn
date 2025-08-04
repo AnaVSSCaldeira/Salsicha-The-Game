@@ -62,7 +62,17 @@ offset_left = -115.0
 offset_top = -154.0
 offset_right = 115.0
 offset_bottom = -127.0
-value = 4.0
+max_value = 300.0
+value = 300.0
+show_percentage = false
+
+[node name="Life_value" type="Label" parent="Life"]
+layout_mode = 0
+offset_right = 230.0
+offset_bottom = 27.0
+text = "999"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="timeout" from="Action" to="." method="_on_action_timeout"]
 [connection signal="finished" from="Boss_sounds" to="." method="_on_boss_sounds_finished"]

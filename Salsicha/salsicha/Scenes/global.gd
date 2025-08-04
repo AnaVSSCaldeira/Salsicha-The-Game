@@ -14,7 +14,7 @@ extends Node
 @export var powers = {
 	"Common":{
 		"1": {
-			"Name": "Projetil saboroso", "Description": "Atire cachorros-quentos nos inimigos! São mais lentos mas dão mais dano.", "Unique": true, "Active": false, "Function": "change_bullet", "Params": ["hotdog", 3, 300]
+			"Name": "Projetil saboroso", "Description": "Atire cachorros-quentes nos inimigos! São mais lentos mas dão mais dano.", "Unique": true, "Active": false, "Function": "change_bullet", "Params": ["hotdog", 3, 300]
 			}, 
 		"2": {
 			"Name": "Dash Bolinha", "Description": "Ao correr, você vira uma bolinha e aumenta sua velocidade.", "Unique": true, "Active": false, "Function": "ball_dash", "Params": []
@@ -44,13 +44,13 @@ extends Node
 			"Name": "To muito forti", "Description": "Aumenta o valor do seu ataque em 20%.", "Unique": false, "Active": false, "Function": "damage_up", "Params": [20.0]
 			},
 		"103": {
-			"Name": "Calanguinho", "Description": "Vire um calanguinho! Diminua de tamanho e fique mais rápido!\nAperte a tecla Q para usar.\nEste poder substituirá o atual.", "Unique": true, "Active": false, "Function": "power_calango", "Params": []
+			"Name": "Calanguinho", "Description": "Vire um calanguinho! Diminua de tamanho e fique mais rápido!\nAperte a tecla Q para usar.\nEste poder substituirá o atual.", "Unique": true, "Active": true, "Function": "power_calango", "Params": []
 			}, 
 		"104": {
 			"Name": "Oba mais comida!", "Description": "Aumenta a chance de aparecer vida em 30%.", "Unique": false, "Active": false, "Function": "chance_heal_up", "Params": [30.0]
 			}, 
 		"105": {
-			"Name": "De novo!", "Description": "Concede um pilo duplo.", "Unique": true, "Active": false, "Function": "double_jump", "Params": []
+			"Name": "De novo!", "Description": "Concede um pulo duplo.", "Unique": true, "Active": false, "Function": "double_jump", "Params": []
 			},
 		"106": {
 			"Name": "Atirador mediano", "Description": "Aumenta a velocidade da sua bala em 20%.", "Unique": false, "Active": false, "Function": "bullet_velocity_up", "Params": [20.0]

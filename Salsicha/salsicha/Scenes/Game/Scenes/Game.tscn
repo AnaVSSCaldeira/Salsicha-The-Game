@@ -114,6 +114,56 @@ position = Vector2(237, 331)
 [node name="P2" type="Marker2D" parent="."]
 position = Vector2(1596, 331)
 
+[node name="Pause" type="Control" parent="."]
+process_mode = 3
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Pause"]
+position = Vector2(968, 398)
+scale = Vector2(9.04, 9.51)
+texture = ExtResource("7_blyp7")
+
+[node name="Label" type="Label" parent="Pause"]
+offset_left = 747.0
+offset_top = 196.0
+offset_right = 1191.0
+offset_bottom = 279.0
+theme_override_font_sizes/font_size = 60
+text = "Jogo pausado"
+horizontal_alignment = 1
+autowrap_mode = 1
+
+[node name="Restart" type="Button" parent="Pause"]
+offset_left = 792.0
+offset_top = 328.0
+offset_right = 1142.0
+offset_bottom = 391.0
+theme_override_font_sizes/font_size = 40
+text = "Recomeçar"
+
+[node name="Continue" type="Button" parent="Pause"]
+offset_left = 792.0
+offset_top = 415.0
+offset_right = 1142.0
+offset_bottom = 478.0
+theme_override_font_sizes/font_size = 40
+text = "Continuar"
+
+[node name="Exit" type="Button" parent="Pause"]
+offset_left = 792.0
+offset_top = 501.0
+offset_right = 1142.0
+offset_bottom = 564.0
+theme_override_font_sizes/font_size = 40
+text = "Sair"
+
 [connection signal="pressed" from="Screen/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="Screen/Exit" to="." method="_on_exit_pressed"]
 [connection signal="timeout" from="Delay_new_wave" to="." method="_on_delay_new_wave_timeout"]
+[connection signal="pressed" from="Pause/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Pause/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="Pause/Exit" to="." method="_on_exit_pressed"]

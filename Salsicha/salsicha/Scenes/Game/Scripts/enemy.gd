@@ -3,14 +3,16 @@ extends Area2D
 var bullet_type
 
 func _ready():
+	$Life/Label.text = str(int($Life.value))
 	var wait_time = randi_range(1,3)
 	$Timer.start(wait_time)
 
 func take_damage(damage):
-	if $Life.value == $Life.max_value:
-		$Life.visible = true
+	$Life.visible = true
 
 	$Life.value = $Life.value - damage
+
+	$Life/Label.text = str(int($Life.value))
 
 	if $Life.value <= 0:
 		$Life.value = 0

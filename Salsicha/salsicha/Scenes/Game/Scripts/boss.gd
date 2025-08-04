@@ -22,6 +22,7 @@ func setup(initial, final):
 	pass
 
 func _ready():
+	$Life/Life_value.text = str(int($Life.value))
 	if $Boss_sounds.playing == false:
 		$Boss_sounds.stream = laugh
 		$Boss_sounds.play()
@@ -44,9 +45,9 @@ func make_move():
 			$Action.start(3)
 
 		else:
-			var chance = randi_range(1,15)
+			var chance = randi_range(1,20)
 
-			if chance >= 1 and chance <= 8:
+			if chance >= 1 and chance <= 13:
 				if randi_range(1,4) <= 2:
 					$Boss_sounds.stream = attack_2
 				else:
@@ -55,7 +56,7 @@ func make_move():
 				$Boss_sounds.play()
 				shoot()
 				
-			elif (chance >= 9 and chance <= 15):
+			elif (chance >= 14 and chance <= 20):
 				count = 0
 				$Boss_sounds.stream = attack_1
 				$Boss_sounds.play()
@@ -68,7 +69,7 @@ func make_move():
 			$Action.start(2)
 
 			if $Life.value < $Life.max_value:
-				if randi_range(1,100) <= 50:
+				if randi_range(1,100) <= 40:
 					$Boss_sounds.stream = healing_1
 					$Boss_sounds.play()
 					healing()
@@ -89,7 +90,7 @@ func _on_action_timeout():
 
 func take_damage(damage):
 	if is_dying == false:
-		if $Life.value <= 0:
+		if $Life.value <= 0 or $Life.value - damage <= 0:
 			is_dying = true
 			$Boss_sounds.stream = die
 			$Boss_sounds.play()
@@ -103,7 +104,7 @@ func take_damage(damage):
 
 		$Life.value = $Life.value - damage
 
-		spawn_food(false)
+		$Life/Life_value.text =  str(int($Life.value))
 
 func shoot():
 	var  bullet = preload("res://Scenes/Game/Scenes/enemy_bullet.tscn").instantiate()
@@ -121,18 +122,16 @@ func spawn_food(damage):
 		var food = preload("res://Scenes/Game/Scenes/food.tscn").instantiate()
 		var food_name
 
-		if damage:
+		var food_type = randi_range(1,100)
+
+		if food_type >= 1 and food_type <= 80:
 			food_name = "chocolate"
-
+		elif food_type >= 81 and food_type <= 86:
+			food_name = "maca"
+		elif food_type >= 87 and food_type <= 95:
+			food_name = "carne"
 		else:
-			var food_type = randi_range(1,15)
-
-			if food_type >= 1 and food_type <= 5:
-				food_name = "maca"
-			elif food_type >= 6 and food_type <= 10:
-				food_name = "carne"
-			else:
-				food_name = "cenoura"
+			food_name = "cenoura"
 
 		food.setup(food_name)
 		
