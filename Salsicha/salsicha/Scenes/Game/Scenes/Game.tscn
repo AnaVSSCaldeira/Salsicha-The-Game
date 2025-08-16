@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bjb5bxg43f6ir"]
+[gd_scene load_steps=11 format=3 uid="uid://bjb5bxg43f6ir"]
 
 [ext_resource type="PackedScene" uid="uid://cac3plj0yo8cx" path="res://Scenes/Game/Scenes/Salsicha.tscn" id="1_3npm6"]
 [ext_resource type="PackedScene" uid="uid://dr31c7kgkwvym" path="res://Scenes/Game/Scenes/Hud.tscn" id="1_5cy7k"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cslnr65pa2nyn" path="res://Scenes/Game/Scenes/enemy_spawn.tscn" id="6_r3fxi"]
 [ext_resource type="Texture2D" uid="uid://bqyfc00hkdkyi" path="res://Scenes/Game/Images/ground_rock.png" id="7_blyp7"]
 [ext_resource type="PackedScene" uid="uid://dpd4ld7sn4p3w" path="res://Scenes/Game/Scenes/Wall.tscn" id="9_aiuxf"]
+[ext_resource type="AudioStream" uid="uid://b7psq6dqmf5ki" path="res://Scenes/Game/Musics and sfx/Pou music ost - MemoryFind Pou.mp3" id="10_ki1t5"]
 
 [node name="Main_Game" type="Node2D"]
 script = ExtResource("1_iidra")
@@ -85,7 +86,8 @@ scale = Vector2(-1, -1)
 
 [node name="Music_theme" type="AudioStreamPlayer" parent="."]
 process_mode = 3
-volume_db = -80.0
+stream = ExtResource("10_ki1t5")
+volume_db = -20.0
 autoplay = true
 
 [node name="Wave" type="Label" parent="."]
@@ -128,6 +130,7 @@ scale = Vector2(9.04, 9.51)
 texture = ExtResource("7_blyp7")
 
 [node name="Label" type="Label" parent="Pause"]
+layout_mode = 0
 offset_left = 747.0
 offset_top = 196.0
 offset_right = 1191.0
@@ -138,22 +141,25 @@ horizontal_alignment = 1
 autowrap_mode = 1
 
 [node name="Restart" type="Button" parent="Pause"]
+layout_mode = 0
 offset_left = 792.0
-offset_top = 328.0
+offset_top = 404.0
 offset_right = 1142.0
-offset_bottom = 391.0
+offset_bottom = 467.0
 theme_override_font_sizes/font_size = 40
 text = "Recomeçar"
 
 [node name="Continue" type="Button" parent="Pause"]
+layout_mode = 0
 offset_left = 792.0
-offset_top = 415.0
+offset_top = 315.0
 offset_right = 1142.0
-offset_bottom = 478.0
+offset_bottom = 378.0
 theme_override_font_sizes/font_size = 40
 text = "Continuar"
 
 [node name="Exit" type="Button" parent="Pause"]
+layout_mode = 0
 offset_left = 792.0
 offset_top = 501.0
 offset_right = 1142.0
